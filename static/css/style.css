@@ -24,6 +24,15 @@ body {
     width: 1.5rem;
 }
 
+.drop-icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    margin-right: .5rem;
+}
+
 .logo-font {
     text-transform: uppercase;
 }

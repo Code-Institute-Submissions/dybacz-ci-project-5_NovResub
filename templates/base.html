@@ -41,7 +41,10 @@
         <div class="row bg-white pt-lg-2 d-none d-lg-flex" id="topnav">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font my-0"><strong>Peak</strong> Fitness
+                    <h2 class="logo-font my-0">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <strong class="ms-2">Peak</strong> Fitness
+                    </h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -84,20 +87,47 @@
                                 <p class="my-0">Account</p>
                             </div>
                         </a>
-                        <ul class="dropdown-menu border-0" aria-labelledby="user-options">
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <li><a href="" class="dropdown-item">Dashboard</a></li>
+                            <a href="" class="dropdown-item">
+                                <i class="fa-solid fa-toolbox drop-icon"></i>
+                                Dashboard
+                            </a>
                             {% endif %}
-                            <a href="" class="dropdown-item">Profile</a></li>
-                            <a href="" class="dropdown-item">Orders</a></li>
-                            <a href="" class="dropdown-item">Plans</a></li>
-                            <a href="" class="dropdown-item">Settings</a></li>
-                            <a href="" class="dropdown-item">Help</a></li>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
+                            <a href="" class="dropdown-item">
+                                <i class="fa-solid fa-user drop-icon"></i>
+                                Profile
+                            </a>
+                            <a href="" class="dropdown-item">
+                                <i class="fa-solid fa-list drop-icon"></i>
+                                Orders
+                            </a>
+                            <a href="" class="dropdown-item">
+                                <i class="fa-solid fa-ranking-star drop-icon"></i>
+                                Plans
+                            </a>
+                            <a href="" class="dropdown-item ">
+                                <i class="fa-solid fa-gears drop-icon"></i>
+                                Settings
+                            </a>
+                            <a href="" class="dropdown-item">
+                                <i class="fa-solid fa-circle-question drop-icon"></i>
+                                Help
+                            </a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">
+                                <i class="fa-solid fa-right-from-bracket drop-icon"></i>
+                                Logout
+                            </a>
                             {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">
+                                <i class="fa-solid fa-user-plus drop-icon"></i>
+                                Register
+                            </a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">
+                                <i class="fa-solid fa-toolbox drop-icon"></i>
+                                Login
+                            </a>
                             {% endif %}
                         </ul>
                     </li>
