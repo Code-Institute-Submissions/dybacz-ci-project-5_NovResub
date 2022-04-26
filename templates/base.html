@@ -38,7 +38,7 @@
 
 <body>
     <header class="container-fluid fixed-top">
-        <div class="row bg-white pt-lg-2 d-none d-lg-flex" id="topnav">
+        <div class="row bg-white d-none d-lg-flex" id="topnav">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font my-0">
@@ -50,10 +50,10 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form action="" method="get">
                     <div class="input-group w-100">
-                        <input type="text" class="form-control border border-black rounded" name="product_query"
+                        <input type="text" class="form-control border border-black rounded me-2" name="product_query"
                             placeholder="Search our products">
                         <div class="input-group-append">
-                            <button type="submit" class="form-control btn btn-primary rounded-pill ms-1">
+                            <button type="submit" class="form-control btn btn-primary border border-2 border-white rounded-pill" id="search-btn">
                                 <span class="icon">
                                     <i class="fas fa-search "></i>
                                 </span>
@@ -68,7 +68,7 @@
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="">
                             <div class="text-center">
-                                <div><i class="fas fa-basket-shopping fa-lg"></i></div>
+                                <div><i class="fas fa-cart-shopping fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
                                     £{{ grand_total|floatformat:2 }}
@@ -80,16 +80,20 @@
                         </a>
                     </li>
                     <li class="list-inline-item dropdown">
-                        <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
+                        <a class="{% if request.user.is_authenticated %}active-account{% endif %} nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-circle-user fa-lg"></i></div>
-                                <p class="my-0">Account</p>
+                                {% if request.user.is_authenticated %}
+                                    <p class="my-0 font-sbold">{{ request.user.get_username }}</p>
+                                {% else %}
+                                    <p class="my-0 font-sbold">Login</p>
+                                {% endif %}
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
+                            {% if request.user.is_staff %}
                             <a href="" class="dropdown-item">
                                 <i class="fa-solid fa-toolbox drop-icon"></i>
                                 Dashboard
@@ -125,7 +129,7 @@
                                 Register
                             </a>
                             <a href="{% url 'account_login' %}" class="dropdown-item">
-                                <i class="fa-solid fa-toolbox drop-icon"></i>
+                                <i class="fa-solid fa-right-from-bracket drop-icon"></i>
                                 Login
                             </a>
                             {% endif %}

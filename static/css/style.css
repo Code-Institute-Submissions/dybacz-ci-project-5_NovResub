@@ -55,16 +55,43 @@ back {
     text-decoration: none;
   }
 
+.active-account {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.active-account:link {
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.dropdown-menu {
+
+}
+
+/* extras */
+
+.font-sbold {
+    font-weight: 700 !important;
+}
+
+
+#search-btn {
+    outline-style: solid !important;
+    outline: rgba(13, 110, 253, 0.6);
+    outline-width: 1px !important;
+}
+
+
 
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-    body {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/banner_image.gif") no-repeat right top fixed;
-        background-size: cover;
-    }
-
     .container {
       max-width: 80%;
     }
@@ -72,6 +99,11 @@ back {
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
+    body {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/banner_image.gif") no-repeat center top fixed;
+        background-size: cover;
+    }
+
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
