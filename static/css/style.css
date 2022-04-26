@@ -51,6 +51,9 @@ back {
     width: fit-content;
 }
 
+.shop-button:link {
+    text-decoration: none;
+  }
 
 
 /* -------------------------------- Media Queries */
