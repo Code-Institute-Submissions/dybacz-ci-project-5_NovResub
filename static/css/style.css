@@ -113,6 +113,11 @@ back {
 
 }
 
+#top-banner {
+    background-color: #0d6efd;
+    color: white;
+}
+
 /* extras */
 
 .font-sbold {
