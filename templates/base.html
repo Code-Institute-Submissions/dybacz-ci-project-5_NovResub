@@ -33,24 +33,24 @@
     {% block add_js %}
     {% endblock %}
 
-    <title>Peak Fitness {% block add_title %}{% endblock %}</title>
+    <title>&#9968; Peak Fitness {% block add_title %}{% endblock %}</title>
 </head>
 
 <body>
     <header class="container-fluid fixed-top">
         <div class="row bg-white d-none d-lg-flex" id="topnav">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+            <div class="col-12 col-lg-4 my-auto mb-0 py-1 py-lg-0 text-center text-lg-left">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link py-3 border-b-anm">
                     <h2 class="logo-font my-0">
                         <i class="fa-solid fa-mountain-sun"></i>
                         <strong class="ms-2">Peak</strong> Fitness
                     </h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <div class="col-12 col-lg-4 h-100 mb-0 py-3 border-b-anm">
                 <form action="" method="get">
                     <div class="input-group w-100">
-                        <input type="text" class="form-control border border-black rounded me-2" name="product_query"
+                        <input type="text" class="form-control border rounded me-2" name="product_query"
                             placeholder="Search our products">
                         <div class="input-group-append">
                             <button type="submit" class="form-control btn btn-primary border border-2 border-white rounded-pill" id="search-btn">
@@ -63,9 +63,9 @@
                 </form>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                <ul class="list-inline list-unstyled text-center text-lg-right my-1 mb-0">
+                    <li class="list-inline-item pt-1">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link my-auto border-b-anm"
                             href="">
                             <div class="text-center">
                                 <div><i class="fas fa-cart-shopping fa-lg"></i></div>
@@ -80,9 +80,9 @@
                         </a>
                     </li>
                     <li class="list-inline-item dropdown">
-                        <a class="{% if request.user.is_authenticated %}active-account{% endif %} nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
+                        <a class="{% if request.user.is_authenticated %}active-account{% endif %} nav-link my-auto border-b-anm" href="#" id="user-options" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <div class="text-center">
+                            <div class="text-center ">
                                 <div><i class="fas fa-circle-user fa-lg"></i></div>
                                 {% if request.user.is_authenticated %}
                                     <p class="my-0 font-sbold">{{ request.user.get_username }}</p>

@@ -39,6 +39,7 @@ back {
 
 .logo-font {
     text-transform: uppercase;
+    user-select: none;
 }
 
 .title-text {
@@ -64,10 +65,49 @@ back {
     color: #fff;
 }
 
-.dropdown-item:hover {
-    background-color: #0d6efd;
+.active-account:hover {
     color: #fff;
 }
+
+.active-account:active {
+    color: #fff;
+}
+
+.active-account:focus {
+    color: #fff;
+}
+
+.dropdown-item:hover{
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* ------------- CSS Animated Bottom Border Class */
+
+.border-b-anm{
+    border:none;
+    position: relative;
+  }
+.border-b-anm:hover{
+    color: #0d6efd;
+  }
+
+.border-b-anm::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 50%;
+    bottom:0;
+    margin-top: 2px;
+    background-color: #0d6efd;
+    transition: all ease-in-out .3s;
+    border-radius: 5px;
+  }
+.border-b-anm:hover::after{
+    width: 100%;
+    left: 0;
+  }
 
 .dropdown-menu {
 
