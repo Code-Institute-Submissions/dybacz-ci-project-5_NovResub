@@ -59,6 +59,7 @@ back {
 .active-account {
     background-color: #0d6efd;
     color: #fff;
+    border-radius: 3px 3px 0px 0px;
 }
 
 .active-account:link {
@@ -66,7 +67,7 @@ back {
 }
 
 .active-account:hover {
-    color: #fff;
+    color: #fff !important;
 }
 
 .active-account:active {
@@ -104,6 +105,10 @@ back {
     transition: all ease-in-out .3s;
     border-radius: 5px;
   }
+
+  .dropdown .border-b-anm::after{
+    background-color: #fff;
+  }
 .border-b-anm:hover::after{
     width: 100%;
     left: 0;
@@ -114,8 +119,11 @@ back {
 }
 
 #top-banner {
-    background-color: #0d6efd;
+    /* background-color: rgb(243, 54, 133); */
+    background-color: rgb(7, 58, 134);
+    background: linear-gradient(0deg,rgba(7, 58, 134, 70.5%) 1%, rgba(7, 58, 134, 100%) 67%);
     color: white;
+    border-top: 2px outset #073a86;
 }
 
 /* extras */
