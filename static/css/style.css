@@ -126,7 +126,26 @@ back {
     border-top: 2px outset #073a86;
 }
 
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+    z-index: -2;
+}
+
+.nav-item {
+    font-size: 21px;
+}
+
 /* extras */
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: contain;
+}
 
 .font-sbold {
     font-weight: 700 !important;
