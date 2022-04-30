@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center mt-3">
-                    <h2 class="logo-font">Products</h2>
+                    <h2 class="logo-font">All Products</h2>
                     <hr class="w-50 mb-1 mx-auto">
                 </div>
             </div>
@@ -28,15 +28,15 @@
                                     <div class="card border-0 h-100">
                                     {% if product.image %}
                                         <a href="" class="my-auto">
-                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid img-thumbnail height-auto">
+                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid img-thumbnail border-0 height-auto">
                                         </a>
                                     {% else %}
                                         <a href="">
-                                            <img class="card-img-top img-fluid img-thumbnail height-auto" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ product.name }}">
+                                            <img class="card-img-top img-fluid img-thumbnail border-0 height-auto" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ product.name }}">
                                         </a>
                                     {% endif %}
-                                      <div class="card-body pb-0">
-                                        <h5 class="card-title mb-0">{{ product.name }}</h5>
+                                      <div class="card-body pt-0 pb-1">
+                                        <h5 class="card-title mb-0 text-center">{{ product.name }}</h5>
                                       </div>
                                       <div class="card-footer">
                                         <div class="row">
