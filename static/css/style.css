@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/banner_image.gif") no-repeat left top fixed;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.1);
     height: calc(100vh - 164px);
