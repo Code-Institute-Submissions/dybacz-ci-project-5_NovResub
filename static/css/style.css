@@ -123,7 +123,7 @@ back {
     background-color: rgb(7, 58, 134);
     background: linear-gradient(0deg,rgba(7, 58, 134, 70.5%) 1%, rgba(7, 58, 134, 100%) 67%);
     color: white;
-    border-top: 2px outset #073a86;
+
 }
 
 .overlay {
@@ -137,6 +137,20 @@ back {
 
 .nav-item {
     font-size: 21px;
+    color: #fff;
+}
+
+.nav-item > .nav-link:link {
+    color: #fff !important;
+}
+.nav-item > .nav-link:visited {
+    color: #fff !important;
+}
+.nav-item > .nav-link:active {
+    color: #fff !important;
+}
+.nav-item > .nav-link:hover {
+    color: #fff !important;
 }
 
 /* extras */
@@ -197,9 +211,15 @@ back {
 }
 
 @media (max-width: 991px) {
+
+    .header-container {
+        padding-top: 116px;
+    }
+
     body {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center center fixed;
         background-size: cover;
+        height: calc(100vh - 116px);
     }
 
     .title-text{
