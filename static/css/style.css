@@ -153,7 +153,7 @@ back {
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     body {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/banner_image.gif") no-repeat center top fixed;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center top fixed;
         background-size: cover;
     }
 
@@ -172,7 +172,7 @@ back {
 
 @media (max-width: 991px) {
     body {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/banner_image.gif") no-repeat center center fixed;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center center fixed;
         background-size: cover;
     }
 
