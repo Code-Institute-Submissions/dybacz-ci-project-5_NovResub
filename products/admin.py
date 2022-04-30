@@ -3,6 +3,31 @@ from .models import Product, MainCategory, SubCategory
 
 # Register your models here.
 
-admin.site.register(Product)
-admin.site.register(MainCategory)
-admin.site.register(SubCategory)
+class MainCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'friendly_name',
+        'name',
+    )
+
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'friendly_name',
+        'name',
+    )
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'sku',
+        'name',
+        'main_category',
+        'price',
+        'rating',
+        'image',
+    )
+
+    ordering = ('sku',)
+
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(MainCategory, MainCategoryAdmin)
+admin.site.register(SubCategory,SubCategoryAdmin)
