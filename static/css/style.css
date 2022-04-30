@@ -141,12 +141,6 @@ back {
 
 /* extras */
 
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: contain;
-}
-
 .font-sbold {
     font-weight: 700 !important;
 }
@@ -167,6 +161,12 @@ back {
     .container {
       max-width: 80%;
     }
+
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: contain;
+    }
   }
 
 /* fixed top navbar only on medium and up */
@@ -174,6 +174,13 @@ back {
     body {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center top fixed;
         background-size: cover;
+    }
+
+    
+    .card-img-top {
+        width: 100%;
+        height: 20vw;
+        object-fit: contain;
     }
 
     .fixed-top-desktop-only {
@@ -202,6 +209,20 @@ back {
 
     .shop-button {
         font-size: .75em;
+    }
+    
+    .card-img-top {
+        width: 100%;
+        height: 25vw;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 575px) {
+    .card-img-top {
+        width: 100%;
+        height: 40vw;
+        object-fit: contain;
     }
 }
 
