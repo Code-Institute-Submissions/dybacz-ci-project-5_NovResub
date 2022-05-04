@@ -21,9 +21,9 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?main_category=fitness" class="dropdown-item">All Fitness</a>
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item">By Rating</a>
-                <a href="" class="dropdown-item">By Category</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=rating&direction=desc" class="dropdown-item">By Rating</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=sub_category&direction=asc" class="dropdown-item">By Category</a>
                 <a href="{% url 'products' %}?main_category=fitness&sub_category=new_accessories" class="dropdown-item">Accessories</a>
                 <a href="{% url 'products' %}?main_category=fitness&sub_category=new_arrivals" class="dropdown-item">New Arrivals</a>
             </div>
