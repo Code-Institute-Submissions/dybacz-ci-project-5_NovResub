@@ -13,6 +13,8 @@ def all_products(request):
     query = None
     main_categories = None
     sub_categories = None
+    sort = None
+    direction = None
 
     if request.GET:
         # if 'main_category' in request.GET:
@@ -20,6 +22,19 @@ def all_products(request):
         #     products = products.filter(main_category__name__in=main_categories)
         #     main_categories = MainCategory.objects.filter(
         #         name__in=main_categories)
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
 
         if 'main_category' in request.GET and 'sub_category' in request.GET:
             sub_categories = request.GET['sub_category'].split('&&')
@@ -37,7 +52,7 @@ def all_products(request):
             products = products.filter(sub_category__name__in=sub_categories)
             sub_categories = SubCategory.objects.filter(
                 name__in=sub_categories)
-        else:
+        elif 'main_category' in request.GET:
             main_categories = request.GET['main_category'].split('&&')
             products = products.filter(main_category__name__in=main_categories)
             main_categories = MainCategory.objects.filter(
@@ -55,11 +70,14 @@ def all_products(request):
                 description__icontains=query)
             products = products.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query,
         'current_main_categories': main_categories,
         'current_sub_categories': sub_categories,
+        'current_sorting' : current_sorting,
     }
 
     return render(request, 'products/products.html', context)
