@@ -140,4 +140,40 @@
                 </div>
             </div>
         </div>
+        <div class="btt-button shadow-sm rounded-0 border">
+            <a class="btt-link d-flex h-100">
+                <i class="fas fa-arrow-up mx-auto my-auto"></i>
+            </a>
+        </div>
+{% endblock %}
+
+
+{% block postload_js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        document.querySelector('.btt-link').onclick = function(){
+            window.scrollTo(0,0)
+        };
+    </script>
+    <script type="text/javascript">
+        document.getElementById("sort-selector").onchange = function() {
+            let currentUrl = new URL(window.location);
+            let selector = this
+            let selectedVal = selector.value
+            if(selectedVal != "reset"){
+                let sort = selectedVal.split("_")[0];
+                let direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        };
+    </script>
 {% endblock %}
