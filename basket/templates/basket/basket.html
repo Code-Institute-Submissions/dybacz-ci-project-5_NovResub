@@ -39,10 +39,10 @@
                                     <td class="p-3 w-25">
                                         {% if item.product.image %}
                                             <a href="{{ item.product.image.url }}" class="my-auto" target="_blank">
-                                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid card-img-top rounded">
+                                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid basket-img rounded">
                                             </a>
                                         {% else %}
-                                            <img src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}" class="img-fluid card-img-top rounded">
+                                            <img src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}" class="img-fluid basket-img rounded">
                                         {% endif %}
                                     </td>
                                     <td class="py-3">
