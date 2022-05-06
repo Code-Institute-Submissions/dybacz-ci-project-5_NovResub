@@ -5,12 +5,14 @@ from .models import Product, MainCategory, SubCategory
 
 class MainCategoryAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'friendly_name',
         'name',
     )
 
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'friendly_name',
         'name',
     )
