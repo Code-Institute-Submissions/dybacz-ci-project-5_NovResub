@@ -15,9 +15,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-back {
-    z-index: -2030;
-}
 
 /* from Bulma */
 .icon {
@@ -118,7 +115,7 @@ back {
     border-radius: 5px;
   }
 
-  .dropdown .border-b-anm::after{
+.dropdown .border-b-anm::after{
     background-color: #fff;
   }
 .border-b-anm:hover::after{
