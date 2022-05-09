@@ -175,6 +175,18 @@ body {
     outline-width: 1px !important;
 }
 
+/* Remove Product details Quantity arrows  */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  /* pointer-events:none; */
+}
 
 
 /* -------------------------------- Media Queries */
