@@ -16,14 +16,12 @@
         for (let i of allQtyInputs){
             let itemId = i.dataset.item_id;
             handleEnableDisable(itemId)
-            console.log(itemId)
         };
 
         // Check enable/disable every time the input is changed
         document.querySelector('.qty_input').onchange = function(){
             let itemId = this.dataset.item_id;
             handleEnableDisable(itemId)
-            console.log(itemId)
         };
 
         // increment quantity 
