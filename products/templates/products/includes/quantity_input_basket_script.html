@@ -14,21 +14,27 @@
 
     // Remove item and reload on click
     try {
-        document.querySelector('.remove-item').onclick = function(e){
-            let csrfToken = "{{ csrf_token }}";
-            let itemId = this.id.split('remove_')[1];
-            let size = this.dataset.size;
-            let url = `/bag/remove/${itemId}`
-            let data = {'csrfmiddlewaretoken': csrfToken, 'size': size}
+        removeItems = document.querySelectorAll('.remove-item');
 
-            fetch(url, {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-            }).then(res => {
-                location.reload;
-            });
-        }
+        for (let i of removeItems){
+            i.onclick = function(e){
+                let csrfToken = "{{ csrf_token }}";
+                let itemId = this.id.split('remove_')[1];
+                console.log(itemId)
+                let size = this.dataset.product_size;
+                let url = `/basket/remove/${itemId}/`
+                let data = {'product_size': size}
+
+                fetch(url, {
+                method: "POST",
+                headers: {'Content-Type': 'application/json','X-CSRFToken': csrfToken},
+                body: JSON.stringify(data)
+                }).then(res => {
+                    console.log('Success');
+                    location.reload();
+                });
+            }
+        };
     } catch (e) {
         // error caught when basket is empty
     }
