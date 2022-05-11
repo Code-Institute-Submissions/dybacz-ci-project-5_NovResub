@@ -1,28 +1,36 @@
 <script type="text/javascript">
     // Update quantity on click
-
-    document.querySelector('.update-link').onclick = function(e){
+    try {
+        document.querySelector('.update-link').onclick = function(e){
         let form = this.previousElementSibling;
         if (form.className = ".update-link"){
             form.submit();
-        }
+            }
+        };
+    } catch (e) {
+        // error caught when basket is empty
     }
 
-    // Remove item and reload on click
-    document.querySelector('.remove-item').onclick = function(e){
-        let csrfToken = "{{ csrf_token }}";
-        let itemId = this.id.split('remove_')[1];
-        let size = this.dataset.size;
-        let url = `/bag/remove/${itemId}`
-        let data = {'csrfmiddlewaretoken': csrfToken, 'size': size}
 
-        fetch(url, {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-        }).then(res => {
-            location.reload;
-        });
+    // Remove item and reload on click
+    try {
+        document.querySelector('.remove-item').onclick = function(e){
+            let csrfToken = "{{ csrf_token }}";
+            let itemId = this.id.split('remove_')[1];
+            let size = this.dataset.size;
+            let url = `/bag/remove/${itemId}`
+            let data = {'csrfmiddlewaretoken': csrfToken, 'size': size}
+
+            fetch(url, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+            }).then(res => {
+                location.reload;
+            });
+        }
+    } catch (e) {
+        // error caught when basket is empty
     }
 
 

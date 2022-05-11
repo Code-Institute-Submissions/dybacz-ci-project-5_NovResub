@@ -19,28 +19,40 @@
         };
 
         // Check enable/disable every time the input is changed
-        document.querySelector('.qty_input').onchange = function(){
+        try {
+            document.querySelector('.qty_input').onchange = function(){
             let itemId = this.dataset.item_id;
             handleEnableDisable(itemId)
-        };
+            };
+        } catch (e) {
+        // error caught when basket is empty
+        }
 
         // increment quantity 
-        document.querySelector('.increment-qty').onclick = function(e){
-            e.preventDefault();
-            let closestInput = this.closest('.input-group').querySelector('.qty_input');
-            let currentValue = parseInt(closestInput.value);
-            closestInput.value = currentValue + 1;
-            let itemId = this.dataset.item_id;
-            handleEnableDisable(itemId)
-        };
+        try {
+            document.querySelector('.increment-qty').onclick = function(e){
+                e.preventDefault();
+                let closestInput = this.closest('.input-group').querySelector('.qty_input');
+                let currentValue = parseInt(closestInput.value);
+                closestInput.value = currentValue + 1;
+                let itemId = this.dataset.item_id;
+                handleEnableDisable(itemId)
+            };
+        } catch (e) {
+        // error caught when basket is empty
+        }
 
         // decrease quantity
-        document.querySelector('.decrement-qty').onclick = function(e){
-            e.preventDefault();
-            let closestInput = this.closest('.input-group').querySelector('.qty_input');
-            let currentValue = parseInt(closestInput.value);
-            currentValue > 1 ? closestInput.value = (currentValue - 1):(currentValue);
-            let itemId = this.dataset.item_id;
-            handleEnableDisable(itemId)
-        };
+        try {
+            document.querySelector('.decrement-qty').onclick = function(e){
+                e.preventDefault();
+                let closestInput = this.closest('.input-group').querySelector('.qty_input');
+                let currentValue = parseInt(closestInput.value);
+                currentValue > 1 ? closestInput.value = (currentValue - 1):(currentValue);
+                let itemId = this.dataset.item_id;
+                handleEnableDisable(itemId)
+            };
+        } catch (e) {
+        // error caught when basket is empty
+        }
 </script>
