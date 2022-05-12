@@ -155,7 +155,21 @@
     </header>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %} 
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
@@ -165,6 +179,14 @@
     {% endblock %}
 
     {% block postload_js %}
+    <script type="text/javascript">
+        let toastEl = document.querySelector('.toast');
+        let toastAlert = new bootstrap.Toast(toastEl, {
+            animation: true,
+            autohide: false,
+        });
+        toastAlert.show();
+    </script>
     {% endblock %}
 </body>
 
