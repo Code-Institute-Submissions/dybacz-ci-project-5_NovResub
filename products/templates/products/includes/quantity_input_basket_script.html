@@ -30,7 +30,6 @@
                 headers: {'Content-Type': 'application/json','X-CSRFToken': csrfToken},
                 body: JSON.stringify(data)
                 }).then(res => {
-                    console.log('Success');
                     location.reload();
                 });
             }
