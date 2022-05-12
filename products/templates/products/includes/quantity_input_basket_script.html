@@ -1,12 +1,15 @@
 <script type="text/javascript">
     // Update quantity on click
     try {
-        document.querySelector('.update-link').onclick = function(e){
-        let form = this.previousElementSibling;
-        if (form.className = ".update-link"){
-            form.submit();
-            }
-        };
+        updateItems = document.querySelectorAll('.update-link');
+        for (let i of updateItems){
+            i.onclick = function(e){
+            let form = this.previousElementSibling;
+            if (form.className = ".update-link"){
+                form.submit();
+                }
+            };
+        }
     } catch (e) {
         // error caught when basket is empty
     }
@@ -20,14 +23,12 @@
             i.onclick = function(e){
                 let csrfToken = "{{ csrf_token }}";
                 let itemId = this.id.split('remove_')[1];
-                console.log(itemId)
                 let size = this.dataset.product_size;
                 let url = `/basket/remove/${itemId}/`
                 let data = {'product_size': size}
-
                 fetch(url, {
                 method: "POST",
-                headers: {'Content-Type': 'application/json','X-CSRFToken': csrfToken},
+                headers: {'Accept': 'application/json' , 'X-Requested-With': 'XMLHttpRequest','X-CSRFToken': csrfToken},
                 body: JSON.stringify(data)
                 }).then(res => {
                     location.reload();

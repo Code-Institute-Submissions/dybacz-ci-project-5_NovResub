@@ -1,13 +1,22 @@
 <script type="text/javascript">
 
-        // Disable +/- buttons outside 1-8 range
-        function handleEnableDisable(itemId){
-            let currentQty = document.querySelector(`#id_qty_${itemId}`);
+        function handleEnableDisableId(itemId){
+            let currentQty = document.querySelector(`#id_qty_${itemId}_`);
             let currentValue = parseInt(currentQty.value);
             let minusDisabled = currentValue < 2;
             let plusDisabled = currentValue > 8;
-            decBtn = document.querySelector(`#decrement-qty_${itemId}`);
-            incBtn = document.querySelector(`#increment-qty_${itemId}`);
+            decBtn = document.querySelector(`#decrement-qty_${itemId}_`);
+            incBtn = document.querySelector(`#increment-qty_${itemId}_`);
+            minusDisabled ? decBtn.disabled = true : plusDisabled ? incBtn.disabled = true : (decBtn.disabled=false, incBtn.disabled=false);
+            };
+
+        function handleEnableDisableIdSz(itemId, itemSize){
+            let currentQty = document.querySelector(`#id_qty_${itemId}_${itemSize}`);
+            let currentValue = parseInt(currentQty.value);
+            let minusDisabled = currentValue < 2;
+            let plusDisabled = currentValue > 8;
+            decBtn = document.querySelector(`#decrement-qty_${itemId}_${itemSize}`);
+            incBtn = document.querySelector(`#increment-qty_${itemId}_${itemSize}`);
             minusDisabled ? decBtn.disabled = true : plusDisabled ? incBtn.disabled = true : (decBtn.disabled=false, incBtn.disabled=false);
             };
         
@@ -15,43 +24,75 @@
         var allQtyInputs = document.getElementsByClassName('qty_input');
         for (let i of allQtyInputs){
             let itemId = i.dataset.item_id;
-            handleEnableDisable(itemId)
+            if (i.dataset.item_size){
+                let itemSize = i.dataset.item_size
+                handleEnableDisableIdSz(itemId, itemSize)
+            } else{
+                handleEnableDisableId(itemId)
+            }
         };
 
         // Check enable/disable every time the input is changed
         try {
-            document.querySelector('.qty_input').onchange = function(){
-            let itemId = this.dataset.item_id;
-            handleEnableDisable(itemId)
-            };
+            qtyInputs = document.querySelectorAll('.qty_input');
+            for (let i of qtyInputs){
+                i.onchange = function(){
+                    console.log(i)
+                    let itemId = i.dataset.item_id;
+                    if (i.dataset.item_size){
+                        let itemSize = i.dataset.item_size
+                        handleEnableDisableIdSz(itemId, itemSize)
+                    } else{
+                        handleEnableDisableId(itemId)
+                    };
+                }
+            }
         } catch (e) {
         // error caught when basket is empty
         }
 
         // increment quantity 
         try {
-            document.querySelector('.increment-qty').onclick = function(e){
-                e.preventDefault();
-                let closestInput = this.closest('.input-group').querySelector('.qty_input');
-                let currentValue = parseInt(closestInput.value);
-                closestInput.value = currentValue + 1;
-                let itemId = this.dataset.item_id;
-                handleEnableDisable(itemId)
-            };
+            incBtns = document.querySelectorAll('.increment-qty');
+            for (let i of incBtns){
+                i.onclick = function(e){
+                    e.preventDefault();
+                    let closestInput = this.closest('.input-group').querySelector('.qty_input');
+                    let currentValue = parseInt(closestInput.value);
+                    closestInput.value = currentValue + 1;
+                    let itemId = i.dataset.item_id;
+                    let itemSize = i.dataset.item_size
+                    console.log(itemSize)
+                    if (i.dataset.item_size){
+                        let itemSize = i.dataset.item_size
+                        handleEnableDisableIdSz(itemId, itemSize)
+                    } else{
+                        handleEnableDisableId(itemId)
+                        };
+                    };
+             }
         } catch (e) {
         // error caught when basket is empty
         }
 
         // decrease quantity
         try {
-            document.querySelector('.decrement-qty').onclick = function(e){
+            decBtns = document.querySelectorAll('.decrement-qty');
+            for (let i of decBtns){
+                i.onclick = function(e){
                 e.preventDefault();
                 let closestInput = this.closest('.input-group').querySelector('.qty_input');
                 let currentValue = parseInt(closestInput.value);
                 currentValue > 1 ? closestInput.value = (currentValue - 1):(currentValue);
                 let itemId = this.dataset.item_id;
-                handleEnableDisable(itemId)
-            };
+                if (i.dataset.item_size){
+                        let itemSize = i.dataset.item_size
+                        handleEnableDisableIdSz(itemId, itemSize)
+                } else{
+                        handleEnableDisableId(itemId)
+                    };
+                };
+            }
         } catch (e) {
         // error caught when basket is empty
         }
