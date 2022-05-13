@@ -110,8 +110,8 @@ Happy coding!
 ## Bugs & Fixes
 Major Bug #1
 
-Increment buttons would only disable on limits for 1st item on change or on load.
-Increment buttons would not disableon limits for any items with size.
-Remove of any item with sizes would remove all same item in basket.
-Update only worked on first item in basket
-Fetch request fixed - cleaned up headers and fixed handling of json data containing product size.
+- Increment buttons would only disable on limits for 1st item on change or on load.
+- Increment buttons would not disableon limits for any items with size.
+- Remove of any item with sizes would remove all same item in basket.
+- Update only worked on first item in basket
+- Fetch request fixed - cleaned up headers and fixed handling of json data containing product size.
