@@ -30,14 +30,14 @@
                             <div class="sort-select-wrapper w-50">
                                 <select id="sort-selector" class="form-select-sm custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                    <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-                                    <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                                    <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
-                                    <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
-                                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                                    <option value="category_asc" {% if current_sorting == 'main_category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                                    <option value="category_desc" {% if current_sorting == 'main_category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                                    <option value="price-asc" {% if current_sorting == 'price-asc' %}selected{% endif %}>Price (low to high)</option>
+                                    <option value="price-desc" {% if current_sorting == 'price-desc' %}selected{% endif %}>Price (high to low)</option>
+                                    <option value="rating-asc" {% if current_sorting == 'rating-asc' %}selected{% endif %}>Rating (low to high)</option>
+                                    <option value="rating-desc" {% if current_sorting == 'rating-desc' %}selected{% endif %}>Rating (high to low)</option>
+                                    <option value="name-asc" {% if current_sorting == 'name-asc' %}selected{% endif %}>Name (A-Z)</option>
+                                    <option value="name-desc" {% if current_sorting == 'name-desc' %}selected{% endif %}>Name (Z-A)</option>
+                                    <option value="sub_category-asc" {% if current_sorting == 'main_category-asc' %}selected{% endif %}>Category (A-Z)</option>
+                                    <option value="sub_category-desc" {% if current_sorting == 'main_category-desc' %}selected{% endif %}>Category (Z-A)</option>
                                 </select>
                             </div>
                         </div>
@@ -161,8 +161,8 @@
             let selector = this
             let selectedVal = selector.value
             if(selectedVal != "reset"){
-                let sort = selectedVal.split("_")[0];
-                let direction = selectedVal.split("_")[1];
+                let sort = selectedVal.split("-")[0];
+                let direction = selectedVal.split("-")[1];
 
                 currentUrl.searchParams.set("sort", sort);
                 currentUrl.searchParams.set("direction", direction);
