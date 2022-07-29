@@ -254,6 +254,11 @@ input[type=number] {
   /* pointer-events:none; */
 }
 
+/* custom white background with transparancy*/
+.bg-white-trans {
+    background-color:  rgba(256,256,256,0.7) !important;
+}
+
 
 /* -------------------------------- Media Queries */
 
