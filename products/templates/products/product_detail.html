@@ -65,10 +65,10 @@
                                         <div class="input-group">
                                             <input type="number" class="form-control qty_input" data-item_id="{{ product.id }}" 
                                             name="quantity" value="1" min="1" max="99" 
-                                            id="id_qty_{{ product.id }}">
+                                            id="id_qty_{{ product.id }}_">
                                             <div class="input-group-add">
                                                 <button class="increment-qty btn btn-primary ms-2 rounded-pill"
-                                                    data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                                    data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}_" type="button">
                                                     <span class="icon">
                                                         <i class="fas fa-plus"></i>
                                                     </span>
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="input-group-subtract">
                                                 <button class="decrement-qty btn border border-primary ms-2 rounded-pill"
-                                                    data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                    data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}_" type="button">
                                                     <span class="icon">
                                                         <i class="fas fa-minus"></i>
                                                     </span>
