@@ -42,8 +42,8 @@
             <div class="col-12 col-lg-4 my-auto mb-0 py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link py-3 border-b-anm">
                     <h2 class="logo-font my-0">
-                        <i class="fa-solid fa-mountain-sun"></i>
-                        <strong class="ms-2">Peak</strong> Fitness
+                        <i class="fa-solid fa-mountain-sun text-peak-grad"></i>
+                        <strong class="ms-2">Peak</strong> <span class="text-peak-blue">Fitness</span>
                     </h2>
                 </a>
             </div>
@@ -53,7 +53,7 @@
                         <input type="text" class="form-control border rounded me-2" name="product_query"
                             placeholder="Search our products">
                         <div class="input-group-append">
-                            <button type="submit" class="form-control btn btn-primary border border-2 border-white rounded-pill" id="search-btn">
+                            <button type="submit" class="form-control btn btn-secondary text-peak-grad fs-4 rounded-pill" id="search-btn">
                                 <span class="icon">
                                     <i class="fas fa-search "></i>
                                 </span>
@@ -138,18 +138,18 @@
                 </ul>
             </div>
         </div>
-        <div class="row bg-primary">
+        <div class="row bg-peak-grad">
             <nav class="navbar navbar-expand-lg navbar-light w-100 py-0">
                 {% include 'includes/mobile-top-header.html' %}
-                {% include 'includes/main-nav.html' %}
                 <button class="navbar-toggler bg-white rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                {% include 'includes/main-nav.html' %}
             </nav>
         </div>
         <div class="row text-center shadow" id="top-banner">
             <div class="col">
-                <h5 class="my-1 logo-font">Free deliver on orders over £{{ free_delivery_threshold }}!</h5>
+                <h5 class="my-1 logo-font">Spend over £{{ free_delivery_threshold }} for FREE Delivery!</h5>
             </div>
         </div>
     </header>
@@ -180,6 +180,14 @@
 
     {% block postload_js %}
     <script type="text/javascript">
+        let mobileSearch = document.querySelector('#mobile-search')
+        let mainNav = document.querySelector('#main-nav')
+
+        mobileSearch.onclick = function(e){
+            mainNav.classList.remove('show');
+            console.log('click')
+        }
+
         let toastEl = document.querySelector('.toast');
         let toastAlert = new bootstrap.Toast(toastEl, {
             animation: true,
