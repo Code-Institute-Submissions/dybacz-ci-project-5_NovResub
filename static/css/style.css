@@ -12,7 +12,7 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
     height: calc(100vh - 164px);
     color: #000;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Century Gothic', sans-serif;
 }
 
 
@@ -47,6 +47,7 @@ body {
 
 .main-logo-link {
     width: fit-content;
+    color: #00dd6f;
 }
 
 .shop-button:link {
@@ -119,7 +120,7 @@ body {
     color: #0d6efd;
   }
 
-.border-b-anm::after{
+/* .border-b-anm::after{
     content: '';
     position: absolute;
     width: 0px;
@@ -130,7 +131,7 @@ body {
     background-color: #0d6efd;
     transition: all ease-in-out .3s;
     border-radius: 5px;
-  }
+  } */
 
 .dropdown .border-b-anm::after{
     background-color: #fff;
@@ -196,8 +197,8 @@ body {
 
 #top-banner {
     /* background-color: rgb(243, 54, 133); */
-    background-color: rgb(7, 58, 134);
-    background: linear-gradient(0deg,rgba(7, 58, 134, 70.5%) 1%, rgba(7, 58, 134, 100%) 67%);
+    background-color: #ef6f6c;
+    /* background: linear-gradient(0deg,rgba(7, 58, 134, 70.5%) 1%, rgba(7, 58, 134, 100%) 67%); */
     color: white;
 }
 
@@ -234,11 +235,15 @@ body {
     font-weight: 700 !important;
 }
 
-
-#search-btn {
-    outline-style: solid !important;
-    outline: rgba(13, 110, 253, 0.6);
-    outline-width: 1px !important;
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0;
+    vertical-align: 0;
+    content: "";
+    border-top: 0.4em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
 }
 
 /* Remove Product details Quantity arrows  */
@@ -255,10 +260,24 @@ input[type=number] {
 }
 
 /* custom white background with transparancy*/
+
 .bg-white-trans {
     background-color:  rgba(256,256,256,0.7) !important;
 }
 
+.bg-peak-grad {
+    background: linear-gradient(225deg, rgba(0,221,111,1) 0%, rgba(0,116,217,1) 75%);
+}
+
+.text-peak-blue {
+    color: #0074d9;
+}
+
+.text-peak-grad {
+    background: -webkit-linear-gradient(225deg, rgba(0,221,111,1) 0%, rgba(0,116,217,1) 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 /* -------------------------------- Media Queries */
 
