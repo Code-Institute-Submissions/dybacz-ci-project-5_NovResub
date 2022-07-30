@@ -27,4 +27,5 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-HANDLER404 = "ci_project_5.views.page_not_found"
+HANDLER404 = "ci_project_5.views.error_404"
+HANDLER500 = "ci_project_5.views.error_500"
