@@ -226,6 +226,13 @@ transform-origin: bottom left;
     font-size: 21px;
     color: #fff;
 }
+.nav-link {
+    padding: 0.5rem 0.4rem;
+}
+
+.list-inline-item{
+    margin: 0 !important;
+}
 
 .nav-item > .nav-link:link {
     color: #fff !important;
@@ -290,6 +297,13 @@ input[type=number] {
     -webkit-text-fill-color: transparent;
 }
 
+.bg-peak-blue {
+    background-color: #7ec4cf;
+}
+
+.bg-peak-green {
+    background-color: #00dd6f;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -356,11 +370,6 @@ input[type=number] {
         height: calc(100vh - 116px);
     }
 
-    .title-text{
-        font-weight: 600;
-        font-size: 2.5em;
-    }
-
     .shop-button {
         font-size: .75em;
     }
@@ -384,16 +393,4 @@ input[type=number] {
         height: 40vw;
         object-fit: contain;
     }
-}
-
-@media (max-width: 486px) {
-    .title-text{
-        font-weight: 500;
-        font-size: 2em;
-    }
-
-    .shop-button {
-        font-size: .45em;
-    }
-
 }
