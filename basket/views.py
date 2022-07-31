@@ -93,7 +93,6 @@ def remove_from_basket(request, item_id):
         product = get_object_or_404(Product, pk=item_id)
         size = None
         size_from_post = json.load(request)['product_size']
-        print(size_from_post)
         if size_from_post:
             size = size_from_post
         basket = request.session.get('basket', {})
