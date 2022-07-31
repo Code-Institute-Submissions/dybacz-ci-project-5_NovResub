@@ -1,117 +1,163 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Peak Fitness E-commerce Site
 
-Welcome dybacz,
+![Peak Fitness logo](/static/images/readme/logo.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+An E-Commerce WebApp store specialising in personal gym equiptment, fitness accessories, healthy consumables & activewear. It also specialises in a range of subscriptions plans realted to healthy living and fitness by providing personalised diet plans & exercise routines.
+Provides a small social platform for other users to share their achievements and active & completed subscriptions 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+The backend runs on the Django 3.2 python web-framework with a PostgreSQL database using the Django MVT model (similar to the standard MVC), the front-end web pages are rendered from templates served by the Django backend, these templates were written in a combination of HTML5 & Django templating language which allows for pythonic functions such as loops and variables to be utilised. 
 
-## Gitpod Reminders
+CSS3, Bootstrap 5, JavaScript were utilised to gain the desired front-end functionality, UX and dynamic UI. AJAX requests will are performed using the Fetch API.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+This WebApp & PostgreSQL database are hosted on Heroku with all static & media files hosted on AWS S3 and handled through Django.
 
-`python3 -m http.server`
+[Click here for the live version](https://peak-fitness.herokuapp.com/)
 
-A blue button should appear to click: _Make Public_,
+# Current Features
 
-Another blue button should appear to click: _Open Browser_.
+## User Features
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### **Navigation**
 
-A blue button should appear to click: _Make Public_,
+**Main Navigation**
+* Search Bar
+* Live Basket Total
+* User Menu
+* E-Commerce Nav
+    * All 
+    * Fitness
+    * Nutrition
+    * Activewear
+    * Offers
+    
+#### Desktop Nav:
+![Desktop Navigation](/static/images/readme/nav_desktop.png)
 
-Another blue button should appear to click: _Open Browser_.
+#### Mobile / Small Devices Navs:
+![Mobile Navigation](/static/images/readme/nav_mobile_1.png)
+#### Mobile / Small Devices Nav Search:
+![Mobile Navigation Search](/static/images/readme/nav_mobile_2.png)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+### **E-commerce / Shop**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+* Browse Product Page
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+* Product Details Page
 
-------
+* Basket Page
 
-## Release History
+* Checkout Page
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+* Confirmation Page
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+* E-commerce / Plans
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+* User Account
+    * Profile Page
+    * Orders Page
+    * Plans Page
+    * Settings Page
+    * Help Page
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+* Login / Register - Accounts Authorisation
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Admin/Staff Features
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### **Dashboard**
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### **Dev Admin**
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### **Functionality Left to Implement**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Future Features
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## How To Use
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Data Model
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Testing 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### General Testing
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Javascript Testing
 
-------
+**Jest**
+- N/A
 
-## FAQ about the uptime script
+### Django Testing
+**Coverage** - Ran on local sqlite3 database.
 
-**Why have you added this script?**
+### User Testing
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+**Guest**
 
-**How will this affect me?**
+**Staff**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Browser Testing
+**Lighthouse**
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Deployment
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+This project was deployed using Heroku.
 
-**So….?**
+### Steps for deployment with AWS
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+* Fork or clone this repository
+* Create a new Heroku app
+* Create new PostgreSQL database for your Heroku app
+* Set the build packs to `Python`
+* Link the Heroku app to the repository
+* Set Config Vars in settings as follows:
+    * AWS_ACCESS_KEY_ID : Your AWS Access Key
+    * AWS_SECRET_ACCESS_KEY: Your AWS Secret Access Key
+    * DATABASE_URL : PostgreSQL database URL
+    * SECRET_KEY : A_SECRET_KEY_OF_YOUR_CHOICE
+    * USE_AWS : True
+* Click on **Deploy**
+* Run Heroku console:
+    ```
+        $ python3 manage.py migrate
+    ```
+* Finally to create a super user, in the Heroku console:
+    ```
+        $ python3 manage.py createsuperuser
+    ```
 
-**Can I opt out?**
+The live link can be found here - [Peak Fitness](https://peak-fitness.herokuapp.com/)
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## Design
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+### Model Designs
 
-**Anything more?**
+**Initial Models:**
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Initial Wireframes & Design Features
 
----
+## Credits 
 
-Happy coding!
+**Python Packages:**
+- Django (3.2) - Web-Framework
+- gunicorn (20.0.4) - Python WSGI HTTP Server for UNIX
+- django-allauth (0.48) - Authentication
+- django-crispy-forms (1.8.1) - Forms
+- dj-database-url (0.5.0) - Allows connection to db
+- psycopg2 (2.9.3) - Interact with PostgreSQL
+- Pillow (9.2.0) - Not yet implemented, ready for menu images.
+- s3transfer (0.3.3) - AWS S3
+- Stripe (2.42.0) - Payment handler
 
-## Bugs & Fixes
-Major Bug #1
+**Front end:**
 
-- Increment buttons would only disable on limits for 1st item on change or on load.
-- Increment buttons would not disableon limits for any items with size.
-- Remove of any item with sizes would remove all same item in basket.
-- Update only worked on first item in basket
-- Fetch request fixed - cleaned up headers and fixed handling of json data containing product size.
+- [Bootstrap 5](https://getbootstrap.com/) - CSS Framework
+- [Font Awesome](https://fontawesome.com/) - Icons
+
+**Media:**
+- The images/videos used in this webapp were sourced from [Pexels](https://www.https://www.pexels.com/) & [Pixabay](https://pixabay.com/)
+
+**Fonts**
+- Some of the fonts used in this webapp were sourced from [Google Fonts](https://fonts.google.com/)
+
+
+
