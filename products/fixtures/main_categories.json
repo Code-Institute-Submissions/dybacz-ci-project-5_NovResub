@@ -27,41 +27,8 @@
        "pk":4,
        "model":"products.maincategory",
        "fields":{
-          "name":"new_arrivals",
-          "friendly_name":"New Arrivals"
-       }
-    },
-    {
-       "pk":5,
-       "model":"products.maincategory",
-       "fields":{
-          "name":"promotions",
-          "friendly_name":"Promotions"
-       }
-    },
-    {
-       "pk":6,
-       "model":"products.maincategory",
-       "fields":{
           "name":"clearance",
           "friendly_name":"Clearance"
        }
-    },
-    {
-       "pk":7,
-       "model":"products.maincategory",
-       "fields":{
-          "name":"sale",
-          "friendly_name":"Sale"
-       }
-    },
-    {
-      "pk":8,
-      "model":"products.maincategory",
-      "fields":{
-         "name":"essentials",
-         "friendly_name":"Essentials"
-      }
-   }
-    
+    }    
  ]

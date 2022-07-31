@@ -86,5 +86,37 @@
          "name":"merchandise",
          "friendly_name":"Merchandise"
       }
+   },
+   {
+      "pk":12,
+      "model":"products.subcategory",
+      "fields":{
+         "name":"essentials",
+         "friendly_name":"Essentials"
+      }
+   },
+   {
+      "pk":13,
+      "model":"products.subcategory",
+      "fields":{
+         "name":"sale",
+         "friendly_name":"Sale"
+      }
+   },
+   {
+      "pk":14,
+      "model":"products.subcategory",
+      "fields":{
+         "name":"promotions",
+         "friendly_name":"Promotions"
+      }
+   },
+   {
+      "pk":15,
+      "model":"products.subcategory",
+      "fields":{
+         "name":"new_arrivals",
+         "friendly_name":"New Arrivals"
+      }
    }
 ]
