@@ -11,14 +11,15 @@
 
 {% block content%}
     <div class="container-fluid h-100">
-        <div class="row h-100">
-            <div class="offset-7 col-4 mt-lg-5 py-lg-5 px-4 my-auto">
-                <h1 class="display-1 logo-font title-text text-end mt-lg-5 pt-lg-3">
-                    Reach your Peak!
+        <div class="row h-75">
+            <div class="offset-3 offset-md-3 offset-xl-6 offset-xxl-7 col-8 col-md-8 col-xl-5 col-xxl-4 text-end my-auto">
+                <h1 class="display-1 logo-font title-text text-end">
+                    Reach your Peak
                 </h1>
-                <div class="my-lg-5 my-2 text-end">
-                    <h4>
-                        <a href="{% url 'products' %}" class="btn-primary shop-button btn-lg rounded-0 shadow-sm text-uppercase rounded-pill py-lg-3 px-lg-5">Shop Now</a>
+                <div>
+                    <h4 class="btn-group d-inline-flex flex-column flex-md-row">
+                        <a href="{% url 'products' %}" class="btn btn-lg bg-peak-green border-0 text-light shadow-sm text-uppercase rounded-pill fw-bold m-2">Shop Now</a>
+                        <a href="#" class="btn btn-lg bg-peak-blue border-0 text-light shadow-sm text-uppercase rounded-pill fw-bold m-2">Peak Plans</a>
                     </h4>
                 </div>
             </div>
