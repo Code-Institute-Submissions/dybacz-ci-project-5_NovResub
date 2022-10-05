@@ -5,9 +5,9 @@
     https://stripe.com/docs/stripe-js
 */
 
-let stripe_public_key = document.querySelector('#id_stripe_public_key').innerHTML.slice(1, -1);
-let client_secret = document.querySelector('#id_client_secret').innerHTML.slice(1, -1);
-let stripe = Stripe(stripe_public_key);
+let stripePublicKey = document.querySelector('#id_stripe_public_key').innerHTML.slice(1, -1);
+let clientSecret = document.querySelector('#id_client_secret').innerHTML.slice(1, -1);
+let stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
 var style = {
     base: {
@@ -24,5 +24,58 @@ var style = {
         iconColor: '#dc3545'
     }
 };
-var card = elements.create('card', {style: style});
+let card = elements.create('card', {style: style});
 card.mount('#card-element');
+
+// Handle validaiton errors on the card element in real time
+card.addEventListener('change', function(event) {
+    let errorDiv = document.querySelector('#card-errors')
+    if (event.error) {
+        let html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        errorDiv.innerHTML = html;
+    } else {
+        errorDiv.textContent = '';
+    }
+});
+
+// Handle form submit
+let form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    card.update({
+        'disabled': true
+    });
+    let cardSubmitBtn = document.querySelector('#submit-button');
+    cardSubmitBtn.setAttribute('disabled', true);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function (result) {
+        if (result.error) {
+            let errorDiv = document.querySelector('#card-errors');
+            let html = `
+                <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>
+            `;
+            errorDiv.innerHTML = html;
+            card.update({
+                'disabled': false
+            });
+            let cardSubmitBtn = document.querySelector('#submit-button');
+            cardSubmitBtn.removeAttribute('disabled');
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});
