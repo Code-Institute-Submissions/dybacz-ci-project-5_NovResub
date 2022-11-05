@@ -6,14 +6,20 @@
 #payment-form .form-control,
 #card-element {
     color: #0d6efd;
-    border: 2px solid #0d6efd;
+}
+
+select, select option {
+  color: #000;
+}
+
+select:invalid, select option[value=""] {
+  color: #aab7aa !important
 }
 
 
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
-  height: 40px;
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 0px;
