@@ -19,7 +19,7 @@
                 <hr class="text-muted m-0">
             </div>
         </div>
-        {% if grand_total %}
+        {% if grand_total and not profile_page %}
             <p class="logo-font text-dark pt-1 pb-0 mb-0">
                 <span class="text-dark text-decoration-underline">Your Basket</span>
                 <span class="text-muted">({{ product_count }})</span>
