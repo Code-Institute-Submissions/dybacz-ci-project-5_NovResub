@@ -1,4 +1,7 @@
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 from products.models import Product
 from .models import Order, OrderLineItem
@@ -13,6 +16,25 @@ class StrpWH_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_confirmation_email(self, order):
+        """Send order confirmation to user"""
+        cust_email = order.email
+        contact_email = settings.DEFAULT_FROM_EMAIL
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order}
+        )
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': contact_email}
+        )
+        send_mail(
+            subject,
+            body,
+            contact_email, 
+            [cust_email]
+        )
 
     def handle_event(self, event):
         """
@@ -79,6 +101,7 @@ class StrpWH_Handler:
                 attempts += 1
                 time.sleep(1)
         if order_exists:
+            self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | Success: Order already in databse',
                 status=200)
@@ -122,7 +145,7 @@ class StrpWH_Handler:
                     order.delete()
                 return HttpResponse(content=f'Webhook received: {event["type"]} | Error: {e}',
                 status=500)
-
+        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | Success: Created Order from webhook',
             status=200)
