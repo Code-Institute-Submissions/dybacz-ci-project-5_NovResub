@@ -1,4 +1,4 @@
-fromdjango import forms
+from django import forms
 from .models import Product, MainCategory, SubCategory
 
 
@@ -17,8 +17,8 @@ class AdminProductForm(forms.ModelForm):
         sc_friendly_names = [(sc.id, sc.get_friendly_name()) for sc in sub_categories]
         self.fields['sub_category'].choices = sc_friendly_names
 
-        for field_name, fields in self.fields.items():
-            field.widget.attrs['class'] = 'border-primary'
-
-
-
+        for field_name, field in self.fields.items():
+            if field_name != 'main_category':
+                field.widget.attrs['class'] = 'border-primary mb-2'
+            else:
+                field.widget.attrs['class'] = 'border-primary mb-2 form-select'
