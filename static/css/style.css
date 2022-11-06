@@ -304,6 +304,20 @@ input[type=number] {
 .bg-peak-green {
     background-color: #00dd6f;
 }
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+    color: #6c757d;
+}
+
+.allauth-form-inner-content input {
+    border-color:#000;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
