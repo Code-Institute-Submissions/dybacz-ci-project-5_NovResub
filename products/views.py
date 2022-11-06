@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, MainCategory, SubCategory
@@ -102,8 +103,13 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+@login_required
 def add_product(request):
     """ Add a new product to the store """
+    if not request.user.is_staff:
+        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = AdminProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -122,8 +128,13 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """ Edit an exisitng product in store """
+    if not request.user.is_staff:
+        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = AdminProductForm(request.POST, request.FILES, instance=product)
@@ -145,8 +156,13 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def remove_product(request, product_id):
     """" Remove product from the store """
+    if not request.user.is_staff:
+        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, f'{product.name} deleted!')
