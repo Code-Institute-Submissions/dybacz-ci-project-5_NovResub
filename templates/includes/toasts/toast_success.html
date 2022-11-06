@@ -30,11 +30,11 @@
                         <div class="col-3 my-1">
                             {% if item.product.image %}
                                 <a href="{{ item.product.image.url }}" class="my-auto" target="_blank">
-                                    <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="w-100">
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-100">
                                 </a>
                             {% else %}
                                 <a href="">
-                                    <img class="w-100" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ product.name }}">
+                                    <img class="w-100" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}">
                                 </a>
                             {% endif %}
                         </div>
