@@ -44,13 +44,5 @@
 
 {% block postload_js %}
     {{ block.super }}
-    <script type="text/javascript">
-        let image = document.querySelector('#new_image')
-        let filename = document.querySelector('#filename')
-
-        image.onchange = function() {
-            let file = this.files[0];
-            filename.innerHTML = `Image will be set to ${file.name}`
-        }
-    </script>
+    <script type="text/javascript" src="{% static 'products/js/image_change.js' %}"></script>
 {% endblock %}
