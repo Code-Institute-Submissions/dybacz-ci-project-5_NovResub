@@ -22,7 +22,9 @@ def all_products(request):
     if request.GET:
         # if 'main_category' in request.GET:
         #     main_categories = request.GET['main_category'].split('&&')
-        #     products = products.filter(main_category__name__in=main_categories)
+        #     products = products.filter(
+        #           main_category__name__in=main_categories
+        #     )
         #     main_categories = MainCategory.objects.filter(
         #         name__in=main_categories)
 
@@ -42,7 +44,7 @@ def all_products(request):
             products = products.filter(sub_category__name__in=sub_categories)
             sub_categories = SubCategory.objects.filter(
                 name__in=sub_categories)
-                
+
         elif 'main_category' in request.GET:
             main_categories = request.GET['main_category'].split('%')
             products = products.filter(main_category__name__in=main_categories)
@@ -107,7 +109,8 @@ def product_detail(request, product_id):
 def add_product(request):
     """ Add a new product to the store """
     if not request.user.is_staff:
-        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        messages.error(request, 'Access Denied: You do not have the required \
+            permissions to do that.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -117,7 +120,8 @@ def add_product(request):
             messages.success(request, 'Success : Product Added')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Error: Failed to add product. Please make sure the form is valid.')
+            messages.error(request, 'Error: Failed to add product. Please make \
+                sure the form is valid.')
     else:
         form = AdminProductForm()
 
@@ -132,7 +136,8 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit an exisitng product in store """
     if not request.user.is_staff:
-        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        messages.error(request, 'Access Denied: You do not have the required \
+            permissions to do that.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -143,7 +148,8 @@ def edit_product(request, product_id):
             messages.success(request, f'Success: {product.name} Updated!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, f'Error: Failed to update {product.name}. Please make sure the form is valid')
+            messages.error(request, f'Error: Failed to update {product.name}. \
+                Please make sure the form is valid')
     else:
         form = AdminProductForm(instance=product)
         messages.info(request, f'Currently Editing: {product.name}')
@@ -160,7 +166,8 @@ def edit_product(request, product_id):
 def remove_product(request, product_id):
     """" Remove product from the store """
     if not request.user.is_staff:
-        messages.error(request, 'Access Denied: You do not have the required permissions to do that.')
+        messages.error(request, 'Access Denied: You do not have the required \
+            permissions to do that.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)

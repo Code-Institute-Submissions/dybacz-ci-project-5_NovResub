@@ -3,6 +3,7 @@ from .models import Product, MainCategory, SubCategory
 
 # Register your models here.
 
+
 class MainCategoryAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
@@ -10,12 +11,14 @@ class MainCategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
         'friendly_name',
         'name',
     )
+
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -32,4 +35,4 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(MainCategory, MainCategoryAdmin)
-admin.site.register(SubCategory,SubCategoryAdmin)
+admin.site.register(SubCategory, SubCategoryAdmin)

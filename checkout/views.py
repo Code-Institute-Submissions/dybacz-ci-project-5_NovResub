@@ -1,7 +1,9 @@
 import stripe
 import json
 
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -71,7 +73,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data[
+                                'items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -110,7 +113,7 @@ def checkout(request):
 
         if request.user.is_authenticated:
             try:
-                profile=UserProfile.objects.get(user=request.user)
+                profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,

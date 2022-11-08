@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404
+)
 from django.contrib import messages
 import json
 from products.models import Product
@@ -27,21 +29,26 @@ def add_to_basket(request, item_id):
             if size in basket[item_id]['items_by_size'].keys():
                 basket[item_id]['items_by_size'][size] += quantity
                 messages.success(
-                    request, f'An additional {quantity} x {product.name}: Size: {size.upper()} has been added to your basket')
+                    request,
+                    f'An additional {quantity} x {product.name}:\
+                         Size: {size.upper()} has been added to your basket')
             else:
                 basket[item_id]['items_by_size'][size] = quantity
                 messages.success(
-                    request, f'{quantity} x {product.name}: Size: {size.upper()} added to your basket')
+                    request, f'{quantity} x {product.name}:\
+                         Size: {size.upper()} added to your basket')
         else:
             basket[item_id] = {'items_by_size': {size: quantity}}
             messages.success(
-                request, f'{quantity} x {product.name}: Size: {size.upper()} added to your basket')
+                request, f'{quantity} x {product.name}:\
+                     Size: {size.upper()} added to your basket')
 
     else:
         if item_id in list(basket.keys()):
             basket[item_id] += quantity
             messages.success(
-                request, f'An additional {quantity} x {product.name} has been added to your basket')
+                request, f'An additional {quantity} x {product.name} has been \
+                    added to your basket')
         else:
             basket[item_id] = quantity
             messages.success(
@@ -66,18 +73,21 @@ def adjust_basket(request, item_id):
         if quantity > 0:
             basket[item_id]['items_by_size'][size] = quantity
             messages.success(
-                    request, f'{product.name}: Size: {size.upper()} quantity updated to {quantity}')
+                    request, f'{product.name}: Size: {size.upper()} quantity \
+                        updated to {quantity}')
         else:
             del basket[item_id]['items_by_size'][size]
             if not basket[item_id]['items_by_size']:
                 basket.pop(item_id)
                 messages.success(
-                    request, f'{product.name}: Size: {size.upper()} removed from your basket')
+                    request, f'{product.name}: Size: {size.upper()} removed \
+                        from your basket')
     else:
         if quantity > 0:
             basket[item_id] = quantity
             messages.success(
-                request, f'{product.name} quantity updated to {quantity} in your basket')
+                request, f'{product.name} quantity updated to {quantity} in \
+                    your basket')
         else:
             basket.pop(item_id)
             messages.success(
@@ -89,7 +99,7 @@ def adjust_basket(request, item_id):
 
 def remove_from_basket(request, item_id):
     """ Remove the item from the shopping basket """
-    try:      
+    try:
         product = get_object_or_404(Product, pk=item_id)
         size = None
         size_from_post = json.load(request)['product_size']
@@ -102,7 +112,8 @@ def remove_from_basket(request, item_id):
             if not basket[item_id]['items_by_size']:
                 basket.pop(item_id)
                 messages.success(
-                    request, f'All {product.name}: Size: {size.upper()} removed from your basket')
+                    request, f'All {product.name}: Size: {size.upper()} \
+                        removed from your basket')
         else:
             basket.pop(item_id)
             messages.success(
