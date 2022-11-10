@@ -7,14 +7,20 @@ html {
 }
 
 body {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.1);
     height: calc(100vh - 164px);
     color: #000;
     font-family: 'Nunito', sans-serif;
 }
 
+.container-top {
+    background: linear-gradient(0deg,rgba(187, 187, 187, 0.2), rgba(0, 68, 255, 0.25)) no-repeat fixed, url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container-mid {
+    translate: 0 -10vh;
+}
 
 /* from Bulma */
 .icon {
@@ -113,6 +119,14 @@ body {
 
 .toast-capper{
     height: 2px;
+}
+
+/* ------------- MailChimp Subscribe/Newsletter Form */
+
+#mc_embed_signup {
+    background: #fff;
+    clear: left;
+    width: 50%;
 }
 
 /* ------------- CSS Animated Bottom Border Class */
@@ -341,6 +355,40 @@ input[type=number] {
     cursor: pointer;
 }
 
+.primary-bg-colour {
+    background-color:rgba(0,116,217,1) !important;
+}
+
+.primary-text-colour {
+    color:rgba(0,116,217,1) !important;
+}
+
+.nav-account li a {
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* unvisited link */
+.nav-account li a:link {
+    color: rgba(0,116,217,1);
+  }
+  
+  /* visited link */
+.nav-account li a:visited {
+    color: rgba(0,116,217,1);
+  }
+  
+  /* mouse over link */
+.nav-account li a:hover {
+    color: rgba(0,221,111,1)
+  }
+  
+  /* selected link */
+.nav-account li a:active {
+    color: blue;
+  }
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -364,10 +412,10 @@ input[type=number] {
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
-    body {
+    /* body {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center top fixed;
         background-size: cover;
-    }
+    } */
 
     
     .card-img-top {
@@ -391,7 +439,7 @@ input[type=number] {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 162px;
     }
 }
 
@@ -401,11 +449,11 @@ input[type=number] {
         padding-top: 116px;
     }
 
-    body {
+    /* body {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 68, 255, 0.25)), url("/media/main_site_images/banner_image.gif") no-repeat center center fixed;
         background-size: cover;
         height: calc(100vh - 116px);
-    }
+    } */
 
     .shop-button {
         font-size: .75em;

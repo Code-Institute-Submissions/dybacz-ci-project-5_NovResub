@@ -42,7 +42,7 @@
 <body>
     <header class="container-fluid fixed-top">
         <div class="row bg-white d-none d-lg-flex" id="topnav">
-            <div class="col-12 col-lg-4 my-auto mb-0 py-1 py-lg-0 text-center text-lg-left">
+            <div class="col-12 col-lg-4 mt-2 mb-0 py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link py-3 ">
                     <h2 class="logo-font my-0">
                         <i class="fa-solid fa-mountain-sun text-peak-grad"></i>
@@ -68,11 +68,16 @@
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-end text-lg-right my-1 mb-0">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-white text-primary" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasBasket" aria-controls="offcanvasBasket">
                         <div class="text-center">
-                            <div>
+                            <div class="position-relative">
                                 <i class="fa-solid fa-basket-shopping"></i>
+                                {% if product_count != 0 %}
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ product_count }}<span class="visually-hidden">unread messages</span></span>
+                                {% else %}
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ product_count }}<span class="visually-hidden">unread messages</span></span>
+                                {% endif %}
                             </div>
                             <p class="my-0">
                                 {% if grand_total %}
@@ -102,7 +107,8 @@
                             overflow-x: hidden!important">
                                 {% if grand_total %}
                                     {% for item in basket_items %}
-                                    <div class="row mt-2 align-items-center">
+                                    <div class="row mt-2 pe-2 align-items-center" style="
+                                    overflow: hidden!important">
                                         <div class="col-5 my-1">
                                             {% if item.product.image %}
                                                 <a href="{{ item.product.image.url }}" class="my-auto" target="_blank">
@@ -128,7 +134,11 @@
                                                     Remove Item
                                                 </a>
                                             {% else %}
-                                                <a href="">Remove Items</a>
+                                            <a class="btn-sm btn-danger remove-item text-decoration-none" id="remove_{{ item.item_id }}"
+                                            data-product_size="{{ item.size }}" role="button">
+                                                <i class="fa-solid fa-xmark"></i>
+                                                Remove Items
+                                            </a>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -162,7 +172,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-white text-primary" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasAccount" aria-controls="offcanvasAccount">
                         <div class="text-center ">
                             <div>
@@ -179,77 +189,85 @@
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAccount"
                         aria-labelledby="offcanvasAccount">
                         <div class="offcanvas-header justify-content-between">
-                            <h5 class="offcanvas-title" id="offcanvasAccountLabel">
-                                <i class="fas fa-circle-user fa-lg"></i>
-                                {{ request.user.username }}
+                            <h5 class="offcanvas-title pt-2" id="offcanvasAccountLabel">
+                                <i class="fas fa-circle-user fa-lg pe-1 logo"></i>
+                                <span>Hello, </span>
+                                <strong>{{ request.user.username }}</strong>
                             </h5>
                             <button type="button" class="btn icon" data-bs-dismiss="offcanvas"
                             aria-label="Close">
                             <i class="fa-solid fa-arrow-left fa-lg"></i>
                             </button>
                         </div>
-                        <div class="offcanvas-body">
-                            <ul class="nav flex-column text-start">
+                        <div class="offcanvas-body d-flex justify-content-between flex-column">
+                            <ul class="nav flex-column text-start nav-account">
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_staff %}
                                         <li class="nav-item">
                                             <a href="{% url 'add_product' %}">
-                                                <i class="fa-solid fa-toolbox drop-icon"></i>
+                                                <i class="fa-solid fa-toolbox mx-3 icon"></i>
                                                 Add New Product
                                             </a>
                                         </li>
+                                        <hr>
                                     {% endif %}
                                     <li class="nav-item">
                                         <a href="{% url 'profile' %}">
-                                            <i class="fa-solid fa-user drop-icon"></i>
-                                            Profile
+                                            <i class="fa-solid fa-user mx-3 icon"></i>
+                                            My Profile
                                         </a>
                                     </li>
+                                    <hr>
+                                    <li class="nav-item">
+                                        <a href="{% url 'my_orders' %}">
+                                            <i class="fa-solid fa-list mx-3 icon"></i>
+                                            My Orders
+                                        </a>
+                                    </li>
+                                    <hr>
                                     <li class="nav-item">
                                         <a href="">
-                                            <i class="fa-solid fa-list drop-icon"></i>
-                                            Orders
+                                            <i class="fa-solid fa-ranking-star mx-3 icon"></i>
+                                            My Plans
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="">
-                                            <i class="fa-solid fa-ranking-star drop-icon"></i>
-                                            Plans
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="">
-                                            <i class="fa-solid fa-gears drop-icon"></i>
-                                            Settings
-                                        </a>
-                                    </li>
+                                    <hr>
                                     <li class="nav-item">
                                         <a href="{% url 'help_page' %}">
-                                            <i class="fa-solid fa-circle-question drop-icon"></i>
+                                            <i class="fa-solid fa-circle-question mx-3 icon"></i>
                                             Help
                                         </a>
                                     </li>
+                                    <hr>
                                     <li class="nav-item">
                                         <a href="{% url 'account_logout' %}">
-                                            <i class="fa-solid fa-right-from-bracket drop-icon"></i>
+                                            <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
                                             Logout
                                         </a>
                                     </li>
+                                    <hr>
                                 {% else %}
                                     <li class="nav-item">
                                         <a href="{% url 'account_signup' %}">
-                                            <i class="fa-solid fa-user-plus drop-icon"></i>
+                                            <i class="fa-solid fa-user-plus mx-3 icon"></i>
                                             Register
                                         </a>
                                     </li>
+                                    <hr>
                                     <li class="nav-item">
                                         <a href="{% url 'account_login' %}">
-                                            <i class="fa-solid fa-right-from-bracket drop-icon"></i>
+                                            <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
                                             Login
                                         </a>
                                     </li>
+                                    <hr>
                                 {% endif %}
                             </ul>
+                            <div class="d-flex pt-3 justify-content-center align-items-baseline">
+                                <hr class="my-4">
+                                <i class="fa-solid fa-mountain-sun text-peak-grad fs-1 p-2"></i>
+                                <strong class="text-muted text-bold">Peak Fitness &copy; 2022</strong>
+                            </div>
                         </div>
                     </div>
                 </ul>
