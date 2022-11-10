@@ -92,7 +92,7 @@
                                     <span class="text-muted">({{ product_count }})</span>
                                 </p>
                             {% endif %}
-                            <button type="button" class="btn icon" data-bs-dismiss="offcanvas"
+                            <button type="button" class="btn icon ms-auto" data-bs-dismiss="offcanvas"
                                 aria-label="Close">
                                 <i class="fa-solid fa-arrow-left fa-lg"></i>
                             </button>
@@ -120,9 +120,9 @@
                                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                                             <p class="my-0 small">Size:
                                                 {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                                            <p class="my-0 small text-muted mb-2">Qty: {{ item.quantity }}</p>
                                             {% if item.quantity == 1 %}
-                                                <a class="btn-sm btn-danger rounded-pill remove-item" id="remove_{{ item.item_id }}"
+                                                <a class="btn-sm btn-danger remove-item text-decoration-none" id="remove_{{ item.item_id }}"
                                                     data-product_size="{{ item.size }}" role="button">
                                                     <i class="fa-solid fa-xmark"></i>
                                                     Remove Item
@@ -132,6 +132,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
+                                    <hr class="my-2">
                                     {% endfor %}
                                 {% endif %}
                             </div>
@@ -143,13 +144,13 @@
                                     </h1>
                                 </div>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex pt-3">
                                 <hr class="my-4">
-                                <button class="btn btn-white float-end" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <button class="btn btn-white float-end border border-primary mx-1" data-bs-dismiss="offcanvas" aria-label="Close">
                                     <span>Continue Shopping</span>
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
-                                <a class="btn btn-primary float-start {% if not grand_total %}disabled{% endif %}"
+                                <a class="btn btn-primary float-start mx-1 {% if not grand_total %}disabled{% endif %}"
                                     href="{% url 'view_basket' %}" role="button"
                                     {% if not grand_total %}disabled{% endif %}>
                                     <span>Proceed to Checkout</span>
@@ -162,7 +163,7 @@
                     </div>
 
                     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        data-bs-target="#offcanvasAccount" aria-controls="offcanvasAccount">
                         <div class="text-center ">
                             <div>
                                 <i class="fas fa-circle-user fa-lg"></i>
@@ -175,15 +176,17 @@
                         </div>
                     </button>
 
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                        aria-labelledby="offcanvasExampleLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAccount"
+                        aria-labelledby="offcanvasAccount">
+                        <div class="offcanvas-header justify-content-between">
+                            <h5 class="offcanvas-title" id="offcanvasAccountLabel">
                                 <i class="fas fa-circle-user fa-lg"></i>
                                 {{ request.user.username }}
                             </h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn icon" data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                            <i class="fa-solid fa-arrow-left fa-lg"></i>
+                            </button>
                         </div>
                         <div class="offcanvas-body">
                             <ul class="nav flex-column text-start">
