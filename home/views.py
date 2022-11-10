@@ -11,3 +11,8 @@ def index(request):
 def privacy_policy(request):
     """ A view to return the index page """
     return render(request, 'home/privacy_policy.html')
+
+
+def help_page(request):
+    """ A view to return the index page """
+    return render(request, 'home/help_page.html')
