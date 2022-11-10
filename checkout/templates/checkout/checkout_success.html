@@ -15,13 +15,17 @@
 
 {% block content%}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container shadow-lg">
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
                 <hr>
                 <h2 class="logo-font mb-4">Thank You</h2>
                 <hr>
+                {% if order_history %}
+                <p class="text-black">Your order information is below. A confirmation email was sent to <strong>{{ order.email }}</strong></p>
+                {% else %}
                 <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -177,11 +181,11 @@
         <div class="row">
 			<div class="col-12 col-lg-7 text-right">
                 {% if from_profile %}
-                <a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
+                <a href="{% url 'my_orders' %}" class="btn btn-black rounded-0 my-2">
 					<span class="icon mr-2">
 						<i class="fas fa-angle-left"></i>
 					</span>
-					<span class="text-uppercase">Back to Profile</span>
+					<span class="text-uppercase">Back to Order History</span>
 				</a>
                 {% else %}
 				<a href="{% url 'products' %}?sub_category=promotions%sale" class="btn btn-black rounded-0 my-2">
