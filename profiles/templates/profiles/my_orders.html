@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content%}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">My Orders ({{ orders|length }})</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-muted">Order History:</p>
+                <div class="order-history table-responsive">
+                    <table class="table tablesm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders|dictsortreversed:"date" %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:12 }}</a>
+                                </td>
+                                <td>{{ order.date }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                        <li class="small">
+                                            {% if item.product.has_sizes %}Size {{ item.product.size|upper }}{% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>£{{ order.grand_total }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postload_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfields.js' %}"></script>
+{% endblock %}
