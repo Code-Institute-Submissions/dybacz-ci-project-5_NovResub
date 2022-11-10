@@ -108,7 +108,7 @@ class StrpWH_Handler:
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | \
-                    Success: Order already in databse',
+            Success: Order already in databse',
                 status=200)
         else:
             order = None
