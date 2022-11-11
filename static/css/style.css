@@ -391,12 +391,49 @@ input[type=number] {
     color: whitesmoke;
 }
 
+#vertical-nav li a {
+    text-decoration: none!important;
+    font-size: .8em!important;
+    font-weight: bold!important;
+    padding: .25em 0 .25em .25em;
+}
+
+/* unvisited link */
+#vertical-nav li a:link {
+    color: rgba(0,116,217,1)!important;
+  }
+  
+  /* visited link */
+#vertical-nav li a:visited {
+    color: rgba(0,116,217,1)!important;
+  }
+  
+  /* mouse over link */
+#vertical-nav li a:hover {
+    color: #fff!important;
+    background-color: rgba(0,116,217,1)!important;
+  }
+  
+  /* selected link */
+#vertical-nav li a:active {
+    color: rgba(0,221,111,1)!important;
+  }
+
 .cta {
     box-shadow: -20px -20px 0 0 rgba(175, 178, 180, 0.15);
     padding: 20px;
     background-color: #fff;
     top: 140px;
     position: relative;
+}
+
+.shopping-nav {
+    max-width: 15vw !important;
+}
+
+.shopping-nav .row {
+    width: 100% !important;
+    max-width: 15.5vw !important;
 }
 /* -------------------------------- Media Queries */
 
