@@ -39,7 +39,7 @@
     <title>Peak Fitness {% block add_title %}{% endblock %}</title>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
     <header class="container-fluid fixed-top">
         <div class="row bg-white d-none d-lg-flex" id="topnav">
             <div class="col-12 col-lg-4 mt-2 mb-0 py-1 py-lg-0 text-center text-lg-left">
@@ -315,6 +315,85 @@
     {% block content %}
     {% endblock %}
 
+    <!-- <footer>
+        <div class="container-fluid">
+            <div class="row bg-peak-grad text-center">
+                <div class="col-4">
+                    <p>I am the Footer</p>
+                </div>
+                <div class="col-4">
+                    <p>I am the Footer</p>
+                </div>
+                <div class="col-4">
+                    <p>I am the Footer</p>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+    <div class="footer-gap">
+        <hr class="bg-transparent">
+    </div>
+    <footer class="footer mt-auto px-5 pt-5 mt-5 bg-peak-grad text-white text-center">
+        <div class="container pt-5">
+            <hr>
+            <div class="row pt-5">
+                <div class="col-sm">
+                    <a href="#" class="text-white text-decoration-none text-uppercase">
+                        <h6>Peak Fitness</h6>
+                    </a>
+                    <p class="fs-6 text-white fw-bold">
+                        <small>&copy; 2022</small>
+                    </p>
+                </div>
+                <div class="col-sm">
+                    <h6 class="fw-bold">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <h6 class="fw-bold">Further Information</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'help_page' %}">FAQs</a></li>
+                        <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Follow us</h6>
+                    <ul class="list-unstyled list-group list-group-horizontal text-center mx-auto d-inline-flex">
+                        <li>
+                            <a href="https://facebook.com" target="_blank">
+                                <i class="fa-brands fa-facebook icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com" target="_blank">
+                                <i class="fa-brands fa-twitter icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com" target="_blank">
+                                <i class="fa-brands fa-instagram icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com" target="_blank">
+                                <i class="fa-brands fa-linkedin icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tiktok.com" target="_blank">
+                                <i class="fa-brands fa-tiktok icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
     {% block postload_js %}
         <script type="text/javascript">
             let mobileSearch = document.querySelector('#mobile-search')
@@ -332,13 +411,6 @@
                 scroll: true,
             })
             offcanvasAlert.show()
-
-            let toastEl = document.querySelector('.toast');
-            let toastAlert = new bootstrap.Toast(toastEl, {
-                animation: true,
-                autohide: false,
-            });
-            toastAlert.show();
         </script>
         {% if grand_total %}
             {% include 'products/includes/quantity_input_basket_script.html' %}

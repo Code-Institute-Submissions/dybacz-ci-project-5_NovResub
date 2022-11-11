@@ -10,9 +10,6 @@ body {
     height: calc(100vh - 164px);
     color: #000;
     font-family: 'Nunito', sans-serif;
-}
-
-.container-top {
     background: linear-gradient(0deg,rgba(187, 187, 187, 0.2), rgba(0, 68, 255, 0.25)) no-repeat fixed, url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.1);
@@ -389,6 +386,18 @@ input[type=number] {
     color: blue;
   }
 
+.list-unstyled li a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.cta {
+    box-shadow: -20px -20px 0 0 rgb(52 58 64 / 20%);
+    padding: 20px;
+    background-color: #fff;
+    top: 110px;
+    position: relative;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
