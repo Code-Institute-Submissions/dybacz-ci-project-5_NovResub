@@ -96,6 +96,7 @@ def all_products(request):
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+    shopping = True
 
     context = {
         'products': products,
@@ -104,6 +105,7 @@ def all_products(request):
         'current_sub_categories': sub_categories,
         'current_sorting': current_sorting,
         'page_header': clean_page_header,
+        'shopping': shopping,
     }
 
     return render(request, 'products/products.html', context)
