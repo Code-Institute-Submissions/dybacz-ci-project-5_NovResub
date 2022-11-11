@@ -6,8 +6,6 @@ from django.db.models.functions import Lower
 from .models import Product, MainCategory, SubCategory
 from .forms import AdminProductForm
 
-# Create your views here.
-
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -25,13 +23,6 @@ def all_products(request):
         return text.replace(symbol, replace)
 
     if request.GET:
-        # if 'main_category' in request.GET:
-        #     main_categories = request.GET['main_category'].split('&&')
-        #     products = products.filter(
-        #           main_category__name__in=main_categories
-        #     )
-        #     main_categories = MainCategory.objects.filter(
-        #         name__in=main_categories)
 
         if 'main_category' in request.GET and 'sub_category' in request.GET:
             sub_categories = request.GET['sub_category'].split('%')
