@@ -10,7 +10,10 @@ from products.models import Product
 
 def view_basket(request):
     """ A view to return the basket contents page """
-    return render(request, 'basket/basket.html')
+    context = {
+        'view_basket': True,
+    }
+    return render(request, 'basket/basket.html', context)
 
 
 def add_to_basket(request, item_id):

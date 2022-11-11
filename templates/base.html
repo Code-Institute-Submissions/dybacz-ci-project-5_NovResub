@@ -53,7 +53,7 @@
             <div class="col-12 col-lg-4 h-100 mb-0 py-3 ">
                 <form action="{% url 'products' %}" method="get">
                     <div class="input-group w-100">
-                        <input type="text" class="form-control border rounded me-2" name="product_query"
+                        <input type="text" class="form-control border rounded me-2" maxlength="50" name="product_query"
                             placeholder="Search our products">
                         <div class="input-group-append">
                             <button type="submit"
@@ -284,11 +284,13 @@
                 {% include 'includes/main-nav.html' %}
             </nav>
         </div>
+        {% if shopping or order_form or view_basket %}
         <div class="row text-center shadow" id="top-banner">
             <div class="col">
                 <h5 class="my-1 logo-font">Spend over £{{ free_delivery_threshold }} for FREE Delivery!</h5>
             </div>
         </div>
+        {% endif %}
     </header>
 
     {% if messages %}
@@ -315,9 +317,6 @@
     {% block content %}
     {% endblock %}
 
-    <div class="footer-gap">
-        <hr class="bg-transparent pt-5 pb-4">
-    </div>
     {% include 'includes/footer.html' %}
 
     {% block postload_js %}
