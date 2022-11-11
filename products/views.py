@@ -18,6 +18,11 @@ def all_products(request):
     sub_categories = None
     sort = None
     direction = None
+    clean_page_header = "All "
+
+    def clean_text(text, symbol, replace):
+        """ A function that replaces symbol in string with replace """
+        return text.replace(symbol, replace)
 
     if request.GET:
         # if 'main_category' in request.GET:
@@ -31,6 +36,10 @@ def all_products(request):
         if 'main_category' in request.GET and 'sub_category' in request.GET:
             sub_categories = request.GET['sub_category'].split('%')
             main_categories = request.GET['main_category'].split('%')
+            page_header = request.GET(
+                ['main_category'] + " " + request.GET['sub_category']
+            )
+            clean_page_header = clean_text(page_header, "_", " ")
             products = products.filter(
                 main_category__name__in=main_categories,
                 sub_category__name__in=sub_categories)
@@ -42,11 +51,24 @@ def all_products(request):
         elif 'sub_category' in request.GET:
             sub_categories = request.GET['sub_category'].split('%')
             products = products.filter(sub_category__name__in=sub_categories)
+            page_header = ""
+            if len(sub_categories) > 1:
+                for i, sub_categorie in enumerate(sub_categories):
+                    count = i + 1
+                    if count != len(sub_categories):
+                        page_header += sub_categorie + " & "
+                    else:
+                        page_header += sub_categorie
+            else:
+                page_header = sub_categories[0]
+            clean_page_header = clean_text(page_header, "_", " ")
             sub_categories = SubCategory.objects.filter(
                 name__in=sub_categories)
 
         elif 'main_category' in request.GET:
             main_categories = request.GET['main_category'].split('%')
+            page_header = request.GET['main_category']
+            clean_page_header += clean_text(page_header, "_", " ")
             products = products.filter(main_category__name__in=main_categories)
             main_categories = MainCategory.objects.filter(
                 name__in=main_categories)
@@ -64,9 +86,11 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+            clean_page_header += " by " + clean_text(sort, "_", " ")
 
         if 'product_query' in request.GET:
             query = request.GET['product_query']
+            clean_page_header = "results for '"+clean_text(query, "_", " ")+"'"
             if not query:
                 messages.error(
                     request, "You didn't enter any search criteria!")
@@ -88,6 +112,7 @@ def all_products(request):
         'current_main_categories': main_categories,
         'current_sub_categories': sub_categories,
         'current_sorting': current_sorting,
+        'page_header': clean_page_header,
     }
 
     return render(request, 'products/products.html', context)
