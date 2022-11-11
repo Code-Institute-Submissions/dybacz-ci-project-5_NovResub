@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block content%}
-    <div class="container container-top h-100">
+    <div class="container container-top h-100 pt-5">
         <div class="row d-flex justify-content-end">
-            <div class="col-4 my-5 p-3">
+            <div class="col-4 my-5 pt-auto">
                 <div>
                     <h1 class="display-1 logo-font title-text">
                         Reach your Peak
@@ -31,20 +31,21 @@
             </div>
         </div>
     </div>
-    <div class="container h-25 bg-transparent">
+    <div class="container h-100 bg-transparent">
         <div class="row cta align-items-center px-2 py-0 rounded rounded-5 w-75 mx-auto">
             <div class="offset-1 col-5">
-                <h2 class="mb-0">Ready to reach your peak?</h2>
-                <h3 class="text-dark">Subscribe to our Newsletter</h3>
+                <h2 class="mb-0">Join the <span>
+                    <i class="fa-solid fa-mountain-sun text-peak-grad"></i>
+                </span> Community!</h2>
+                <h3 class="text-dark text-muted">Subscribe to our Newsletter</h3>
 
             </div>
-            <div class="col-7 py-1 rounded ms-auto" id="mc_embed_signup">
+            <div class="col-7 py-1 bg-transparent ms-auto" id="mc_embed_signup">
                 <form
                     action="https://herokuapp.us9.list-manage.com/subscribe/post?u=631c37e383a7d5fde6b8878d9&amp;id=648cf1a081&amp;f_id=00ea09e1f0"
                     method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
                     target="_blank" novalidate>
                     <div id="mc_embed_signup_scroll">
-                        <h2>Subscribe to our Newsletter</h2>
                         <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
                         <div class="mc-field-group">
                             <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
@@ -62,7 +63,7 @@
                         <div class="optionalParent">
                             <div class="clear foot">
                                 <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                                    class="button btn">
+                                    class="btn button primary-bg-colour">
                             </div>
                         </div>
                     </div>
