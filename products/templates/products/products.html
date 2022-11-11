@@ -277,6 +277,14 @@
                         window.location.replace(currentUrl);
                     }
                 }, 200);
+            } else {
+                let selectedVal = event.target.value
+                setTimeout(function(){
+                    currentUrl.searchParams.delete("sort");
+                    currentUrl.searchParams.delete("direction");
+
+                    window.location.replace(currentUrl);
+                }, 200);
             }
         }
 
