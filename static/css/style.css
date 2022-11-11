@@ -392,10 +392,10 @@ input[type=number] {
 }
 
 .cta {
-    box-shadow: -20px -20px 0 0 rgb(52 58 64 / 20%);
+    box-shadow: -20px -20px 0 0 rgba(175, 178, 180, 0.15);
     padding: 20px;
     background-color: #fff;
-    top: 110px;
+    top: 140px;
     position: relative;
 }
 /* -------------------------------- Media Queries */
