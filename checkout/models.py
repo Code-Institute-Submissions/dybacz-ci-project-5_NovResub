@@ -65,7 +65,7 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Ovveride the original ave method to set the
+        Ovveride the original save method to set the
         order number if it hasn't already been set.
         """
         if not self.order_number:
