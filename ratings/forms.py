@@ -2,7 +2,7 @@ from django import forms
 from .models import UserItemRatingLine
 
 
-class UserItemRatingLineForm(forms.ModelForm):
+class UserItemRatingForm(forms.ModelForm):
     """"""
     class Meta:
         """"""
@@ -22,16 +22,16 @@ class UserItemRatingLineForm(forms.ModelForm):
         }
 
         self.fields['rating'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            if field != 'country':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
-                self.fields[field].widget.attrs['class'] = 'stripe-style-input \
-                    my-2'
-            else:
-                self.fields[field].widget.attrs['class'] = 'stripe-style-input \
-                    my-2 form-select'
-            self.fields[field].label = False
+        # for field in self.fields:
+        #     if field != 'country':
+        #         if self.fields[field].required:
+        #             placeholder = f'{placeholders[field]} *'
+        #         else:
+        #             placeholder = placeholders[field]
+        #         self.fields[field].widget.attrs['placeholder'] = placeholder
+        #         self.fields[field].widget.attrs['class'] = 'stripe-style-input \
+        #             my-2'
+        #     else:
+        #         self.fields[field].widget.attrs['class'] = 'stripe-style-input \
+        #             my-2 form-select'
+        #     self.fields[field].label = False

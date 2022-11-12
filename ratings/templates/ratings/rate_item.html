@@ -14,7 +14,11 @@
     <div class="container mb-2">
         <div class="row shadow">
             <div class="col mt-4">
-                <h1>Help & FAQs</h1>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-center mt-2">
+                    <button class="btn btn-primary">Rate Product</button>
+                </div>
             </div>
         </div>
     </div>
