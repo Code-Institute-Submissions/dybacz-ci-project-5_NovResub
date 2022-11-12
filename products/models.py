@@ -50,6 +50,9 @@ class Product(models.Model):
         max_digits=4, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    rating_collection = models.ForeignKey('ratings.ItemRating', null=True,
+                                          blank=True, on_delete=models.CASCADE,
+                                          related_name='rating_collection')
 
     def __str__(self):
         return str(self.name)
