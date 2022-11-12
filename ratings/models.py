@@ -8,14 +8,14 @@ from django.db.models import Avg
 
 
 from products.models import Product
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 
 
 class ItemRating(models.Model):
     """
     Item rating model for all user ratings.
     """
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True, blank=True)
     total_rating = models.DecimalField(
         max_digits=4, decimal_places=2, null=True, blank=True)
 
@@ -54,15 +54,27 @@ class UserItemRatingLine(models.Model):
         ])
 
     def __str__(self):
-        return f'{self.rating} / 5 review from {self.user.username} on order {self.order.order_number}'
+        return f'{self.rating} / 5 review from {self.user.username}\
+    on order {self.order.order_number}'
+
+@receiver(post_save, sender=Product)
+def create_product_rating_collection(sender, instance, created, **kwargs):
+    if created:
+        collection = ItemRating.objects.create(product=instance)
+        print(collection, collection.pk, collection.product.rating_collection)
+        Product.objects.filter(pk=instance.pk).update(rating_collection=collection)
+        print(collection, collection.pk, collection.product.rating_collection)
 
 
-# @receiver(post_save, sender=User)
-# def update_product_rating(sender, instance, created, **kwargs):
-#     """
-#     Create/Update user profile
-#     """
-#     if created:
-#         UserProfile.objects.create(user=instance)
-#     # If User already exists -> Save profile
-#     instance.userprofile.save()
+@receiver(post_save, sender=OrderLineItem)
+def create_product_rating_instance(sender, instance, created, **kwargs):
+    """
+    Create Instance for rating product from order for each order line item
+    """
+    if created:
+        UserItemRatingLine.objects.create(
+            item_rating=instance.product.rating_collection,
+            product=instance.product,
+            user=instance.order.user_profile.user,
+            order=instance.order
+        )
