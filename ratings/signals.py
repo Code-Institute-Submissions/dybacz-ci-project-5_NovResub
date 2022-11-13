@@ -10,6 +10,8 @@ def update_on_save(sender, instance, created, **kwargs):
     Update rating total on lineitem update/create
     """
     instance.item_rating.update_total_rating()
+    instance.product.rating = instance.item_rating.total_rating
+    instance.product.save()
 
 
 @receiver(post_delete, sender=UserItemRatingLine)
