@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col text-center">
                 <hr>
-                <h2 class="logo-font mb-4">Thank You</h2>
+                <h2 class="logo-font my-2">Thank You</h2>
                 <hr>
                 {% if order_history %}
                 <p class="text-black">Your order information is below. A confirmation email was sent to <strong>{{ order.email }}</strong></p>
@@ -129,7 +129,7 @@
                                 {% if item.product.image %}
                                     <img class="w-75" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="w-75" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ product.name }}">
+                                    <img class="w-75" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}">
                                 {% endif %}
                             </a>
                         </div>
@@ -186,10 +186,5 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-			<div class="col-12 col-lg-7 text-right">
-                
-			</div>
-		</div>
     </div>
 {% endblock %}
