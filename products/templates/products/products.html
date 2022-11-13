@@ -12,8 +12,8 @@
 {% block content%}
         <div class="overlay"></div>
         <div class="d-flex shopping-container">
-            <div class="container shopping-nav p-0 m-0 bg-white border-end shadow-sm">
-                <div class="row position-fixed mt-3 ps-1">
+            <div class="container position-fixed shopping-nav p-0 m-0 bg-white border-end shadow-sm">
+                <div class="row mt-3 ps-1 overflow-auto pb-5">
                     <div class="col-12 ps-3 overflow-hidden">
                         <h4 class="primary-text-colour m-0 text-center">{{ page_header|title }}</h4>
                         <hr class="my-2">
@@ -39,19 +39,19 @@
                             </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{% url 'products' %}?main_category=activewear">
                                     <i class="fa-solid fa-person-running icon"></i>
                                     Activewear
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{% url 'products' %}?sub_category=new_arrivals">
                                     <i class="fa-regular fa-star icon"></i>
                                     New Arrivals
                                 </a>
                             </li>
                             <li class="nav-item">
-                                  <a class="nav-link" href="#">
+                                  <a class="nav-link" href="{% url 'products' %}?sub_category=promotions%sale">
                                     <i class="fa-solid fa-tags icon"></i>
                                     Offers
                                 </a>
@@ -59,40 +59,52 @@
                             <hr class="my-2">
                           </ul>
                     </div>
-                    <div class="col-12 ps-3">
-                        <h3 class="primary-text-colour m-0 text-center">Sort by</h3>
-                        <hr class="my-2">
-                    </div>
-                    <div class="col-12 ps-3 sort-checker">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckPriceLTH"
-                            value="price-asc" {% if current_sorting == 'price-asc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckPriceLTH">Price (Low to High)</label>
-                          </div>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckPriceHTL"
-                            value="price-desc" {% if current_sorting == 'price-desc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckPriceHTL">Price (High to Low)</label>
+                    <div class="overflow-hidden">
+                        <div class="col-12 ps-3">
+                            <h3 class="primary-text-colour m-0 text-center">Sort by</h3>
+                            <hr class="my-2">
                         </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckNameAZ"
-                            value="name-asc" {% if current_sorting == 'name-asc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckNameAZ">Name (A-Z)</label>
-                          </div>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckNameZA"
-                            value="name-desc" {% if current_sorting == 'name-desc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckNameZA">Name (Z-A)</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckCategoryAZ"
-                            value="sub_category-asc" {% if current_sorting == 'main_category-asc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckCategoryAZ">Category (A-Z)</label>
-                          </div>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckCategoryZA"
-                            value="sub_category-desc" {% if current_sorting == 'main_category-desc' %}selected{% endif %}>
-                            <label class="form-check-label" for="flexSwitchCheckCategoryZA">Category (Z-A)</label>
+                        <div class="col-12 ps-3 sort-checker">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckPriceLTH"
+                                value="price-asc">
+                                <label class="form-check-label" for="flexSwitchCheckPriceLTH">Price (Low to High)</label>
+                              </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckPriceHTL"
+                                value="price-desc">
+                                <label class="form-check-label" for="flexSwitchCheckPriceHTL">Price (High to Low)</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckNameAZ"
+                                value="name-asc">
+                                <label class="form-check-label" for="flexSwitchCheckNameAZ">Name (A-Z)</label>
+                              </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckNameZA"
+                                value="name-desc">
+                                <label class="form-check-label" for="flexSwitchCheckNameZA">Name (Z-A)</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckRating51"
+                                value="rating-desc">
+                                <label class="form-check-label" for="flexSwitchCheckRating51">Rating (High to Low)</label>
+                              </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckRating15"
+                                value="rating-asc">
+                                <label class="form-check-label" for="flexSwitchCheckRating15">Rating (Low to High)</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckCategoryAZ"
+                                value="main_category-asc">
+                                <label class="form-check-label" for="flexSwitchCheckCategoryAZ">Category (A-Z)</label>
+                              </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckCategoryZA"
+                                value="main_category-desc">
+                                <label class="form-check-label" for="flexSwitchCheckCategoryZA">Category (Z-A)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,12 +126,14 @@
                                 <div class="sort-select-wrapper w-50">
                                     <select id="sort-selector" class="form-select-sm custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                        <option value="price-asc" {% if current_sorting == 'price-asc' %}selected{% endif %}>Price (low to high)</option>
-                                        <option value="price-desc" {% if current_sorting == 'price-desc' %}selected{% endif %}>Price (high to low)</option>
-                                        <option value="name-asc" {% if current_sorting == 'name-asc' %}selected{% endif %}>Name (A-Z)</option>
-                                        <option value="name-desc" {% if current_sorting == 'name-desc' %}selected{% endif %}>Name (Z-A)</option>
-                                        <option value="sub_category-asc" {% if current_sorting == 'main_category-asc' %}selected{% endif %}>Category (A-Z)</option>
-                                        <option value="sub_category-desc" {% if current_sorting == 'main_category-desc' %}selected{% endif %}>Category (Z-A)</option>
+                                        <option value="price-asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                                        <option value="price-desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                                        <option value="name-asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                        <option value="name-desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                        <option value="name-asc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                        <option value="name-desc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                        <option value="main_category-asc" {% if current_sorting == 'main_category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                        <option value="main_category-desc" {% if current_sorting == 'main_category_desc' %}selected{% endif %}>Category (Z-A)</option>
                                     </select>
                                 </div>
                             </div>
@@ -161,7 +175,7 @@
                                                         </p>
                                                     {% endif %}
                                                     {% if product.rating %}
-                                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                                     {% else %}
                                                         <small class="text-muted">No Rating</small>
                                                     {% endif %}
@@ -176,32 +190,6 @@
                                         </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="card h-100 border-0">
-                                        {% if product.image %}
-                                        <a href="">
-                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid">
-                                        </a>
-                                        {% else %}
-                                        <a href="">
-                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ product.name }}">
-                                        </a>
-                                        {% endif %}
-                                        <div class="card-body pb-0">
-                                            <p class="mb-0">{{ product.name }}</p>
-                                        </div>
-                                        <div class="card-footer pt-0 border-0 text-left">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                                    {% if product.rating %}
-                                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                                    {% else %}
-                                                        <small class="text-muted">No Rating</small>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             {% if forloop.counter|divisibleby:1 %}
                                 <div class="col-12 d-sm-none mb-5">
