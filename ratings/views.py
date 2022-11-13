@@ -32,22 +32,20 @@ def ratings(request, order_number, product_id):
     """ A view to return the rating form page """
 
     order_number_id = get_object_or_404(Order, order_number=order_number).pk
-    print(order_number_id)
     item_rating_line = get_object_or_404(
         UserItemRatingLine,
         user=request.user,
         product=product_id,
         order=order_number_id
     )
-    print(item_rating_line)
+
     if request.method == 'POST':
         rating = request.POST.get('rating')
-        product_pk = request.POST.get('product')
-        product = get_object_or_404(Product, product=product_pk).name
+        object = get_object_or_404(Product, product=product_id)
         form = UserItemRatingForm(request.POST, instance=item_rating_line)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Success: You rated {product} as\
+            messages.success(request, f'Success: You rated {object} as\
              a {rating} /5')
             return redirect(reverse(
                 'my_ratings'))

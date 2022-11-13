@@ -74,9 +74,14 @@ def create_product_rating_instance(sender, instance, created, **kwargs):
     only for users
     """
     if created and instance.order.user_profile is not None:
-        UserItemRatingLine.objects.create(
-            item_rating=instance.product.rating_collection,
+        does_exist = UserItemRatingLine.objects.filter(
             product=instance.product,
             user=instance.order.user_profile.user,
-            order=instance.order
-        )
+            order=instance.order).exists()
+        if not does_exist:
+            UserItemRatingLine.objects.create(
+                item_rating=instance.product.rating_collection,
+                product=instance.product,
+                user=instance.order.user_profile.user,
+                order=instance.order
+            )
