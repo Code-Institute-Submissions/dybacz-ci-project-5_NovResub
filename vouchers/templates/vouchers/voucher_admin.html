@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content%}
+    <div class="overlay"></div>
+    <div class="container mb-2 shadow">
+        <div class="row">
+            <hr>
+            <div class="col d-flex justify-content-evenly align-items-center">
+                <h2 class="logo-font mb-4">Voucher Admin ({{ vouchers|length }})</h2>
+                <a href="{% url 'add_voucher' %}" class="btn btn-success text-center">
+                    <i class="fa-solid fa-plus icon"></i>
+                    Add New Voucher
+                </a>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="order-history table-responsive">
+                    <table class="table align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Voucher Code:</th>
+                                <th scope="col">Voucher Name:</th>
+                                <th scope="col">Description:</th>
+                                <th scope="col">Discount Multiplier:</th>
+                                <th scope="col">Expiry</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for voucher in vouchers %}
+                            <tr>
+                                <td>
+                                    {{ voucher.voucher_code }}
+                                </td>
+                                <td>
+                                    {{ voucher.name }}
+                                </td>
+                                <td>
+                                    {{ voucher.description }}
+                                </td>
+                                <td>
+                                    {{ voucher.fractional_discount }}
+                                </td>
+                                <td>
+                                    {{ voucher.expiry_date|date:"SHORT_DATE_FORMAT" }}
+                                </td>
+                                <td class="text-center">
+                                    <a href="{% url 'remove_voucher' voucher.id%}" class="btn btn-danger text-center mx-3">
+                                        <i class="fa-solid fa-xmark icon"></i>
+                                        Delete Voucher
+                                    </a>
+                                    <a href="{% url 'edit_voucher' voucher.id%}" class="btn btn-warning text-center mx-3">
+                                        <i class="fa-regular fa-pen-to-square icon"></i>
+                                        Edit Voucher
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

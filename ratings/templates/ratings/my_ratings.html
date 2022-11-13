@@ -38,7 +38,7 @@
                             <tr>
                                 <td>
                                     <div class="col">
-                                        <a href="{% url 'product_detail' rating.product.id %}" class="text-decoration-none d-flex justify-content-evenly align-items-center">
+                                        <a href="{% url 'product_detail' rating.product.id %}" class="text-decoration-none align-items-center">
                                             {% if rating.product.image %}
                                                 <img class="w-50" src="{{ rating.product.image.url }}" alt="{{ product.name }}">
                                             {% else %}

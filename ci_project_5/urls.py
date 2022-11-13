@@ -28,6 +28,7 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('plans/', include('plans.urls')),
     path('profiles/ratings/', include('ratings.urls')),
+    path('vouchers/', include('vouchers.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 HANDLER404 = "ci_project_5.views.error_404"

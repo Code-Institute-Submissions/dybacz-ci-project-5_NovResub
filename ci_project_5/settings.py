@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'ratings',
+    'vouchers',
     'plans',
 
     # Other
