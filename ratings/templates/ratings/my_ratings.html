@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content%}
+    <div class="overlay"></div>
+    <div class="container mb-2 shadow">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">My Ratings ({{ reviews|length }})</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-muted">Items to rate:</p>
+                <div class="order-history table-responsive">
+                    <table class="table align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rating in ratings %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' rating.order.order_number %}" title="{{ rating.order.order_number }}">
+                                        {{ rating.order.order_number }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ rating.order.date|date:"SHORT_DATE_FORMAT" }}
+                                </td>
+                                <td>
+                                    {{ rating.product }}
+                                </td>
+                                <td>
+                                    {{ rating.rating }}
+                                </td>
+                                <td>
+                                    <a href="{% url 'product_rating' rating.order.order_number rating.product.pk %}" class="btn btn-primary text-center">Leave a Rating</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

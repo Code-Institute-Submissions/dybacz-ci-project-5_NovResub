@@ -16,3 +16,11 @@ class ItemRatingAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ItemRating, ItemRatingAdmin)
+
+
+class ItemRatingLineAdmin(admin.ModelAdmin):
+    """"""
+    list_display = ('product', 'user', 'order', 'rating')
+
+
+admin.site.register(UserItemRatingLine, ItemRatingLineAdmin)
