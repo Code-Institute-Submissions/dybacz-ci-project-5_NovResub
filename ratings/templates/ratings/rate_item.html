@@ -11,15 +11,95 @@
 
 {% block content%}
     <div class="overlay"></div>
-    <div class="container mb-2">
-        <div class="row shadow">
-            <div class="col mt-4">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="text-center mt-2">
-                    <button class="btn btn-primary">Rate Product</button>
+    <div class="container mb-2 shadow">
+        <div class="row">
+            <div class="col text-center">
+                <hr>
+                <h2 class="logo-font my-2">Rate your Purchase</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="order-confirmation-wrapper p-4 pb-2 border rounded">
+                    <div class="row pt-2">
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0 text-black fw-bold">
+                                <u>Order Number</u>
+                            </p>
+                            <p class="mb-0">{{ item.order.order_number }}</p>
+                        </div>
+                        <div class="col-12 col-md-6 text-end">
+                            <p class="mb-0 text-black fw-bold">
+                                <u>Order Date</u>
+                            </p>
+                            <p class="mb-0">{{ item.order.date }}</p>
+                        </div>
+                    </div>
+                    <hr class="my-2 p-0">
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            <small class="text-muted text fw-bold">
+                                <u>Item Details:</u>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-4">
+                            <a href="">
+                                {% if item.product.image %}
+                                    <img class="w-75" src="" alt="{{ product.name }}">
+                                {% else %}
+                                    <img class="w-75" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <p class="small mb-0 text-black fw-bold">
+                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product.size|upper }}{% endif %}
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
+                        </div>
+                    </div>
+                    <hr class="my-2 p-0">
+                    <div class="row">
+                        <div class="col mt-4">
+                            <form action="" class="mt-3" method="POST" id="rating-update-form">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-primary">
+                                        <i class="fa-regular fa-star-half-stroke icon"></i>
+                                        Update Rating
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="my-2 p-0">
+                    <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                            <a href="{% url 'my_ratings' %}" class="btn btn-white primary-text-colour border border-primary rounded-0 my-2">
+                                <span class="icon mr-2">
+                                    <i class="fas fa-angle-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back to My Ratings</span>
+                            </a>
+                        </div>
+                        <div class="col-6 d-flex flex-column align-items-center">
+                            <div>
+                                <i class="fa-solid fa-mountain-sun text-peak-grad fs-1 p-2"></i>
+                            </div>
+                            <div>
+                                <strong class="text-muted text-bold">Peak Fitness</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <hr class="my-2 p-0">
     </div>
 {% endblock %}

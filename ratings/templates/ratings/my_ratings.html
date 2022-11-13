@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">My Ratings ({{ reviews|length }})</h2>
+                <h2 class="logo-font mb-4">My Ratings ({{ ratings|length }})</h2>
                 <hr>
             </div>
         </div>
@@ -26,10 +26,10 @@
                     <table class="table align-middle table-borderless">
                         <thead>
                             <tr>
-                                <th scope="col">Order Number</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Rating</th>
+                                <th scope="col">Item:</th>
+                                <th scope="col">Order Number:</th>
+                                <th scope="col">Date of Order:</th>
+                                <th scope="col">Your Rating:</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -37,15 +37,24 @@
                             {% for rating in ratings %}
                             <tr>
                                 <td>
+                                    <div class="col">
+                                        <a href="{% url 'product_detail' rating.product.id %}" class="text-decoration-none d-flex justify-content-evenly align-items-center">
+                                            {% if rating.product.image %}
+                                                <img class="w-50" src="{{ rating.product.image.url }}" alt="{{ product.name }}">
+                                            {% else %}
+                                                <img class="w-50" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ rating.product.name }}">
+                                            {% endif %}
+                                            <span>{{ rating.product.name }}</span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
                                     <a href="{% url 'order_history' rating.order.order_number %}" title="{{ rating.order.order_number }}">
-                                        {{ rating.order.order_number }}
+                                        {{ rating.order.order_number|truncatechars:12 }}
                                     </a>
                                 </td>
                                 <td>
                                     {{ rating.order.date|date:"SHORT_DATE_FORMAT" }}
-                                </td>
-                                <td>
-                                    {{ rating.product }}
                                 </td>
                                 <td>
                                     {{ rating.rating }}
