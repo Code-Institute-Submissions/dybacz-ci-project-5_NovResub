@@ -29,7 +29,7 @@ class ItemRating(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.product} - Rating: {self.total_rating}'
+        return f'{self.total_rating}'
 
 
 class UserItemRatingLine(models.Model):
@@ -59,11 +59,12 @@ class UserItemRatingLine(models.Model):
 
 @receiver(post_save, sender=Product)
 def create_product_rating_collection(sender, instance, created, **kwargs):
+    """
+    Create product rating collection/book on creation of product.
+    """
     if created:
         collection = ItemRating.objects.create(product=instance)
-        print(collection, collection.pk, collection.product.rating_collection)
         Product.objects.filter(pk=instance.pk).update(rating_collection=collection)
-        print(collection, collection.pk, collection.product.rating_collection)
 
 
 @receiver(post_save, sender=OrderLineItem)
@@ -78,3 +79,4 @@ def create_product_rating_instance(sender, instance, created, **kwargs):
             user=instance.order.user_profile.user,
             order=instance.order
         )
+    
