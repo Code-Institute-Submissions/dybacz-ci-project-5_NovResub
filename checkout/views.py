@@ -60,9 +60,11 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
-            profile = UserProfile.objects.get(user=request.user)
-            # Attach user profile to order
-            order.user_profile = profile
+            if request.user.is_authenticated:
+                profile = UserProfile.objects.get(user=request.user)
+                # Attach user profile to order
+                order.user_profile = profile
+            
             order.original_basket = json.dumps(basket)
             
             order.save()

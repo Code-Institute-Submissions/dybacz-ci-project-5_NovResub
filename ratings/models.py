@@ -71,12 +71,12 @@ def create_product_rating_collection(sender, instance, created, **kwargs):
 def create_product_rating_instance(sender, instance, created, **kwargs):
     """
     Create Instance for rating product from order for each order line item
+    only for users
     """
-    if created:
+    if created and instance.order.user_profile is not None:
         UserItemRatingLine.objects.create(
             item_rating=instance.product.rating_collection,
             product=instance.product,
             user=instance.order.user_profile.user,
             order=instance.order
         )
-    
