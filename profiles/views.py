@@ -17,8 +17,7 @@ def profile(request):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Delivery Information Updated \
-                Succesfully')
+            messages.success(request, 'Success: Delivery Information Updated')
         else:
             messages.error(request, 'Error: Update Failed, Please makesure the \
                 form is valid')
