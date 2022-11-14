@@ -1,26 +1,28 @@
+/* ------------- Profiles Page */
+
 .order-history {
-    max-height: 416px; 
+    max-height: 416px;
     overflow: auto;
 }
 
-#profile-update-form input::placeholder{
+#profile-update-form input::placeholder {
     color: #aab7c4;
 }
 
 #profile-update-form input,
 #profile-update-form select {
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
 }
 
 #id_default_country,
-#id_default_country option:not(:first-child){
+#id_default_country option:not(:first-child) {
     color: #000;
 }
 

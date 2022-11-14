@@ -1,7 +1,7 @@
 /* -------------------------------- Imports */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* -------------------------------- HTML & BODY & UNIVERSAL STYLING */
 html {
     height: 100%;
 }
@@ -10,13 +10,9 @@ body {
     height: calc(100vh - 164px);
     color: #000;
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(0deg,rgba(187, 187, 187, 0.2), rgba(0, 68, 255, 0.25)) no-repeat fixed, url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
+    background: linear-gradient(0deg, rgba(187, 187, 187, 0.2), rgba(0, 68, 255, 0.25)) no-repeat fixed, url("/media/main_site_images/banner_image.gif") no-repeat left top fixed;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.1);
-}
-
-.container-mid {
-    translate: 0 -10vh;
 }
 
 /* from Bulma */
@@ -53,35 +49,59 @@ body {
     color: #00dd6f;
 }
 
-.shop-button:link {
-    text-decoration: none;
-  }
-
-.active-account {
-    background-color: #0d6efd;
-    color: #fff;
-    border-radius: 3px 3px 0px 0px;
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+    z-index: -2;
 }
 
-.active-account:link {
-    color: #fff;
+/* -------------------------------- Custom color classes */
+.bg-peak-grad {
+    background: linear-gradient(225deg, rgba(0, 221, 111, 1) 0%, rgba(0, 116, 217, 1) 75%);
 }
 
-.active-account:hover {
-    color: #fff !important;
+.text-peak-blue {
+    color: #0074d9;
 }
 
-.active-account:active {
-    color: #fff;
+.text-peak-grad {
+    background: -webkit-linear-gradient(225deg, rgba(0, 221, 111, 1) 0%, rgba(0, 116, 217, 1) 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.active-account:focus {
-    color: #fff;
+.bg-peak-blue {
+    background-color: #7ec4cf;
+}
+
+.bg-peak-green {
+    background-color: #00dd6f;
+}
+
+.primary-bg-colour {
+    background-color: rgba(0, 116, 217, 1) !important;
+}
+
+.primary-text-colour {
+    color: rgba(0, 116, 217, 1) !important;
+}
+
+/* -------------------------------- Home Page */
+
+.container-mid {
+    translate: 0 -10vh;
+}
+
+.dropdown-menu {
+    border: solid 1px rgba(0, 0, 0, .15) !important;
 }
 
 .dropdown-item:hover {
-  background-color: #0d6efd;
-  color: #fff;
+    background-color: #0d6efd;
+    color: #fff;
 }
 
 .btt-button {
@@ -99,24 +119,9 @@ body {
     cursor: pointer;
 }
 
-.message-container {
-    position: fixed;
-    top: 72px;
-    right: 15px;
-    z-index: 9999999999;
-}
-
-.custom-toast {
-    overflow: visible;
-}
-
 #offcanvasToast {
     height: 0 !important;
     max-height: 0 !important;
-}
-
-.toast-capper{
-    height: 2px;
 }
 
 /* ------------- MailChimp Subscribe/Newsletter Form */
@@ -129,198 +134,67 @@ body {
 
 /* ------------- CSS Animated Bottom Border Class */
 
-.border-b-anm{
-    border:none;
-    position: relative;
-  }
-.border-b-anm:hover{
-    color: #0d6efd;
-  }
-
 .hover-anim {
-display: inline-block;
-position: relative;
-color: #ffffff;
+    display: inline-block;
+    position: relative;
+    color: #ffffff;
 }
 
 .hover-anim:after {
-content: '';
-position: absolute;
-width: 100%;
-transform: scaleX(0);
-height: 2px;
-bottom: 0;
-left: 0;
-background-color: #ffffff;
-transform-origin: bottom right;
-transition: transform 0.25s ease-out;
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
 }
 
 .hover-anim:hover:after {
-transform: scaleX(1);
-transform-origin: bottom left;
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
-.dropdown .border-b-anm::after{
-    background-color: #fff;
-  }
-.border-b-anm:hover::after{
-    width: 100%;
-    left: 0;
-  }
-
-.dropdown-menu {
-
-}
-
-.arrow-up {
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 10px solid black;
-    position: absolute;
-    top: -10px;
-    right: 113px;
-}
-
-.arrow-primary {
-    border-bottom-color: var(--bs-primary);
-}
-
-.arrow-success {
-    border-bottom-color: var(--bs-success);
-}
-
-.arrow-info {
-    border-bottom-color: var(--bs-info);
-}
-
-.arrow-warning {
-    border-bottom-color: var(--bs-warning);
-}
-
-.arrow-danger {
-    border-bottom-color: var(--bs-danger);
-}
-
-.arrow-secondary {
-    border-bottom-color: var(--bs-secondary);
-}
-
-.arrow-light {
-    border-bottom-color: var(--bs-light);
-}
-
-.arrow-dark {
-    border-bottom-color: var(--bs-dark);
-}
-
-.basket-notification-wrapper {
-    height: 135px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-
+/* ------------- Delivery Threshold Banner */
 #top-banner {
-    /* background-color: rgb(243, 54, 133); */
     background-color: #ef6f6c;
-    /* background: linear-gradient(0deg,rgba(7, 58, 134, 70.5%) 1%, rgba(7, 58, 134, 100%) 67%); */
     color: white;
 }
 
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    background-color: #fff;
-    z-index: -2;
-}
-
+/* ------------- Nav Link universal styling */
 .nav-item {
     font-size: 21px;
     color: #fff;
 }
+
 .nav-link {
     padding: 0.5rem 0.4rem;
 }
 
-.list-inline-item{
+.list-inline-item {
     margin: 0 !important;
 }
 
-.nav-item > .nav-link:link {
-    color: #fff !important;
-}
-.nav-item > .nav-link:visited {
-    color: #fff !important;
-}
-.nav-item > .nav-link:active {
-    color: #fff !important;
-}
-.nav-item > .nav-link:hover {
+.nav-item>.nav-link:link {
     color: #fff !important;
 }
 
-/* extras */
-
-.font-sbold {
-    font-weight: 700 !important;
+.nav-item>.nav-link:visited {
+    color: #fff !important;
 }
 
-.dropdown-toggle::after {
-    display: inline-block;
-    margin-left: 0;
-    vertical-align: 0;
-    content: "";
-    border-top: 0.4em solid;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0;
-    border-left: 0.3em solid transparent;
+.nav-item>.nav-link:active {
+    color: #fff !important;
 }
 
-/* Remove Product details Quantity arrows  */
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.nav-item>.nav-link:hover {
+    color: #fff !important;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-  /* pointer-events:none; */
-}
 
-/* custom white background with transparancy*/
-
-.bg-white-trans {
-    background-color:  rgba(256,256,256,0.7) !important;
-}
-
-.bg-peak-grad {
-    background: linear-gradient(225deg, rgba(0,221,111,1) 0%, rgba(0,116,217,1) 75%);
-}
-
-.text-peak-blue {
-    color: #0074d9;
-}
-
-.text-peak-grad {
-    background: -webkit-linear-gradient(225deg, rgba(0,221,111,1) 0%, rgba(0,116,217,1) 75%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.bg-peak-blue {
-    background-color: #7ec4cf;
-}
-
-.bg-peak-green {
-    background-color: #00dd6f;
-}
 
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
@@ -328,7 +202,7 @@ input[type=number] {
 }
 
 .allauth-form-inner-content input {
-    border-color:#000;
+    border-color: #000;
     border-radius: 0;
 }
 
@@ -336,7 +210,7 @@ input[type=number] {
     display: none;
 }
 
-/* Admin Product Form */
+/* ------------- Admin Product Form */
 
 .btn-file {
     position: relative;
@@ -353,13 +227,7 @@ input[type=number] {
     cursor: pointer;
 }
 
-.primary-bg-colour {
-    background-color:rgba(0,116,217,1) !important;
-}
-
-.primary-text-colour {
-    color:rgba(0,116,217,1) !important;
-}
+/* ------------- Account Offcanvas Nav */
 
 .nav-account li a {
     text-decoration: none;
@@ -367,58 +235,60 @@ input[type=number] {
     font-weight: bold;
 }
 
-/* unvisited link */
 .nav-account li a:link {
-    color: rgba(0,116,217,1);
-  }
-  
-  /* visited link */
+    color: rgba(0, 116, 217, 1);
+}
+
 .nav-account li a:visited {
-    color: rgba(0,116,217,1);
-  }
-  
-  /* mouse over link */
+    color: rgba(0, 116, 217, 1);
+}
+
 .nav-account li a:hover {
-    color: rgba(0,221,111,1)
-  }
-  
-  /* selected link */
+    color: rgba(0, 221, 111, 1)
+}
+
 .nav-account li a:active {
-    color: blue;
-  }
+    color: #ef6f6c;
+}
 
 .list-unstyled li a {
     text-decoration: none;
     color: whitesmoke;
 }
 
+/* ------------- Shopping side Nav */
+
 #vertical-nav li a {
-    text-decoration: none!important;
-    font-size: .8em!important;
-    font-weight: bold!important;
+    text-decoration: none !important;
+    font-size: .8em !important;
+    font-weight: bold !important;
     padding: .25em 0 .25em .25em;
 }
 
-/* unvisited link */
 #vertical-nav li a:link {
-    color: rgba(0,116,217,1)!important;
-  }
-  
-  /* visited link */
+    color: rgba(0, 116, 217, 1) !important;
+}
+
 #vertical-nav li a:visited {
-    color: rgba(0,116,217,1)!important;
-  }
-  
-  /* mouse over link */
+    color: rgba(0, 116, 217, 1) !important;
+}
+
 #vertical-nav li a:hover {
-    color: #fff!important;
-    background-color: rgba(0,116,217,1)!important;
-  }
-  
-  /* selected link */
+    color: #fff !important;
+    background-color: rgba(0, 116, 217, 1) !important;
+}
+
 #vertical-nav li a:active {
-    color: rgba(0,221,111,1)!important;
-  }
+    color: rgba(0, 221, 111, 1) !important;
+}
+
+.shopping-nav {
+    max-width: 15vw !important;
+    overflow-x: hidden !important;
+    height: 75vh;
+}
+
+/* ------------- Homepage Signup Form */
 
 .cta {
     box-shadow: -20px -20px 0 0 rgba(175, 178, 180, 0.15);
@@ -429,47 +299,44 @@ input[type=number] {
     z-index: 11;
 }
 
-.shopping-nav {
-    max-width: 15vw !important;
-    overflow-x: hidden !important;
-    /* height: calc(100vh - 140px); */
-    height: 75vh;
-}
+/* ------------- Custom Scrollbar */
 
-/* width */
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: #fff;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #00dd6f;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #0074d9;
 }
+
+/* ------------- Footer */
 
 footer {
     z-index: 10;
 }
 
+/* ------------- allauth account forms */
+
 #div_id_login {
     margin-bottom: 10px;
 }
+
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
-      max-width: 80%;
+        max-width: 80%;
     }
 
     .card-img-top {
@@ -483,7 +350,7 @@ footer {
         max-height: 240px;
         object-fit: contain;
     }
-  }
+}
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
@@ -492,14 +359,14 @@ footer {
         background-size: cover;
     }
 
-    
+
     .card-img-top {
         width: 100%;
         height: 20vw;
         object-fit: contain;
     }
 
-    .basket-img{
+    .basket-img {
         width: 100%;
         height: auto;
         object-fit: contain;
@@ -530,10 +397,6 @@ footer {
         height: calc(100vh - 116px);
     }
 
-    .shop-button {
-        font-size: .75em;
-    }
-    
     .card-img-top {
         width: 100%;
         height: 25vw;
@@ -545,6 +408,7 @@ footer {
         height: auto;
         object-fit: contain;
     }
+
     #mc_embed_signup {
         width: 100%;
     }
@@ -556,7 +420,7 @@ footer {
     .optionalParent .clear {
         justify-items: center;
     }
-    }
+}
 
 @media (max-width: 575px) {
     .card-img-top {
