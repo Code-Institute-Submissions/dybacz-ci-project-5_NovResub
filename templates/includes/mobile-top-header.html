@@ -23,90 +23,99 @@
     </div>
 </li>
 {% if request.user.is_authenticated %}
-    <li class="list-inline-item dropdown">
-        <a class="text-white nav-link d-block d-lg-none" href="#" id="user-options" data-bs-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <div class="text-center ">
-                <div><i class="fas fa-circle-user fa-lg"></i></div>
-                <p class="my-0 font-sbold">{{ request.user.get_username }}</p>
-            </div>
-        </a>
-        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-            {% if request.user.is_authenticated %}
-            {% if request.user.is_staff %}
-                <a href="{% url 'add_product' %}" class="dropdown-item">
-                    <i class="fa-solid fa-toolbox drop-icon"></i>
-                    Add New Product
-                </a>
-                <a href="{% url 'voucher_admin' %}" class="dropdown-item">
-                    <i class="fa-solid fa-ticket-simple drop-icon"></i>
-                    Voucher Admin
-                </a>
-            {% endif %}
-                <a href="{% url 'profile' %}" class="dropdown-item">
-                    <i class="fa-solid fa-user drop-icon"></i>
-                    My Profile
-                </a>
-                <a href="{% url 'my_orders' %}" class="dropdown-item">
-                    <i class="fa-solid fa-list drop-icon"></i>
-                    My Orders
-                </a>
-                <a href="{% url 'my_ratings' %}" class="dropdown-item">
-                    <i class="fa-solid fa-star drop-icon"></i>
-                    My Ratings
-                </a>
-                <a href="{% url 'view_plans' %}" class="dropdown-item">
-                    <i class="fa-solid fa-ranking-star drop-icon"></i>
-                    My Plans
-                </a>
-                <a href="{% url 'help_page'%}" class="dropdown-item">
-                    <i class="fa-solid fa-circle-question drop-icon"></i>
-                    Help
-                </a>
-                <a href="{% url 'account_logout' %}" class="dropdown-item">
-                    <i class="fa-solid fa-right-from-bracket drop-icon"></i>
-                    Logout
-                </a>
-            {% else %}
-                <a href="{% url 'account_signup' %}" class="dropdown-item">
-                    <i class="fa-solid fa-user-plus drop-icon"></i>
-                    Register
-                </a>
-                <a href="{% url 'account_login' %}" class="dropdown-item">
-                    <i class="fa-solid fa-right-from-bracket drop-icon"></i>
-                    Login
-                </a>
-            {% endif %}
+<li class="list-inline-item dropdown">
+    <a class="text-white nav-link d-block d-lg-none" href="#" id="user-options" data-bs-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <div class="text-center ">
+            <div><i class="fas fa-circle-user fa-lg"></i></div>
+            <p class="my-0 font-sbold">{{ request.user.get_username }}</p>
         </div>
-    </li>
+    </a>
+    <nav class="dropdown-menu border-0" aria-labelledby="user-options">
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+        <a href="{% url 'add_product' %}" class="dropdown-item">
+            <i class="fa-solid fa-toolbox drop-icon"></i>
+            Add New Product
+        </a>
+        <a href="{% url 'voucher_admin' %}" class="dropdown-item">
+            <i class="fa-solid fa-ticket-simple drop-icon"></i>
+            Voucher Admin
+        </a>
+        {% endif %}
+        <a href="{% url 'profile' %}" class="dropdown-item">
+            <i class="fa-solid fa-user drop-icon"></i>
+            My Profile
+        </a>
+        <a href="{% url 'my_orders' %}" class="dropdown-item">
+            <i class="fa-solid fa-list drop-icon"></i>
+            My Orders
+        </a>
+        <a href="{% url 'my_ratings' %}" class="dropdown-item">
+            <i class="fa-solid fa-star drop-icon"></i>
+            My Ratings
+        </a>
+        <a href="{% url 'view_plans' %}" class="dropdown-item">
+            <i class="fa-solid fa-ranking-star drop-icon"></i>
+            My Plans
+        </a>
+        <a href="{% url 'help_page'%}" class="dropdown-item">
+            <i class="fa-solid fa-circle-question drop-icon"></i>
+            Help
+        </a>
+        <a href="{% url 'account_logout' %}" class="dropdown-item">
+            <i class="fa-solid fa-right-from-bracket drop-icon"></i>
+            Logout
+        </a>
+        {% else %}
+        <a href="{% url 'account_signup' %}" class="dropdown-item">
+            <i class="fa-solid fa-user-plus drop-icon"></i>
+            Register
+        </a>
+        <a href="{% url 'account_login' %}" class="dropdown-item">
+            <i class="fa-solid fa-right-from-bracket drop-icon"></i>
+            Login
+        </a>
+        {% endif %}
+    </nav>
+</li>
 {% else %}
-    <li class="list-inline-item dropdown">
-        <a class="text-white nav-link d-block d-lg-none" href="{% url 'account_login' %}">
-            <div class="text-center ">
-                <div><i class="fas fa-user fa-lg"></i></div>
-                <p class="my-0 font-sbold">Login</p>
-            </div>
-        </a>
-    </li>
-    <li class="list-inline-item dropdown">
-        <a class="text-white nav-link d-block d-lg-none" href="{% url 'account_signup' %}">
-            <div class="text-center ">
-                <div><i class="fas fa-solid fa-user-plus fa-lg"></i></div>
-                <p class="my-0 font-sbold">Register</p>
-            </div>
-        </a>
-    </li>
+<li class="list-inline-item dropdown">
+    <a class="text-white nav-link d-block d-lg-none" href="{% url 'account_login' %}">
+        <div class="text-center ">
+            <div><i class="fas fa-user fa-lg"></i></div>
+            <p class="my-0 font-sbold">Login</p>
+        </div>
+    </a>
+</li>
+<li class="list-inline-item dropdown">
+    <a class="text-white nav-link d-block d-lg-none" href="{% url 'account_signup' %}">
+        <div class="text-center ">
+            <div><i class="fas fa-solid fa-user-plus fa-lg"></i></div>
+            <p class="my-0 font-sbold">Register</p>
+        </div>
+    </a>
+</li>
 {% endif %}
 <li class="list-inline-item">
     <a class="{% if grand_total %}text-white font-weight-bold{% else %}text-white{% endif %} nav-link d-block d-lg-none"
         href="{% url 'view_basket' %}">
         <div class="text-center">
-            <div><i class="fas fa-cart-shopping fa-lg"></i></div>
+            <div class="position-relative">
+                <i class="fas fa-cart-shopping fa-lg"></i>
+                {% if product_count != 0 %}
+                <span class="position-absolute top-0 start-95 badge rounded-pill bg-danger">{{ product_count }}<span
+                        class="visually-hidden">unread messages</span></span>
+                {% else %}
+                <span class="position-absolute top-0 start-95 badge rounded-pill bg-secondary">{{ product_count }}<span
+                        class="visually-hidden">unread messages</span></span>
+                {% endif %}
+            </div>
             <p class="my-0">
                 {% if grand_total %}
-                    £{{ grand_total|floatformat:2 }}
+                £{{ grand_total|floatformat:2 }}
                 {% else %}
-                    £0.00
+                £0.00
                 {% endif %}
             </p>
         </div>

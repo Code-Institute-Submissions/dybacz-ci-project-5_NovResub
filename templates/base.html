@@ -77,16 +77,20 @@
                             <div class="position-relative">
                                 <i class="fa-solid fa-basket-shopping"></i>
                                 {% if product_count != 0 %}
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ product_count }}<span class="visually-hidden">unread messages</span></span>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ product_count }}<span
+                                        class="visually-hidden">unread messages</span></span>
                                 {% else %}
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ product_count }}<span class="visually-hidden">unread messages</span></span>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ product_count }}<span
+                                        class="visually-hidden">unread messages</span></span>
                                 {% endif %}
                             </div>
                             <p class="my-0">
                                 {% if grand_total %}
-                                    £{{ grand_total|floatformat:2 }}
+                                £{{ grand_total|floatformat:2 }}
                                 {% else %}
-                                    £0.00
+                                £0.00
                                 {% endif %}
                             </p>
                         </div>
@@ -95,10 +99,10 @@
                         aria-labelledby="offcanvasBasketLabel">
                         <div class="offcanvas-header justify-content-between">
                             {% if grand_total %}
-                                <p class="logo-font text-dark pt-1 pb-0 mb-0">
-                                    <span class="text-dark text-decoration-underline">Your Basket</span>
-                                    <span class="text-muted">({{ product_count }})</span>
-                                </p>
+                            <p class="logo-font text-dark pt-1 pb-0 mb-0">
+                                <span class="text-dark text-decoration-underline">Your Basket</span>
+                                <span class="text-muted">({{ product_count }})</span>
+                            </p>
                             {% endif %}
                             <button type="button" class="btn icon ms-auto" data-bs-dismiss="offcanvas"
                                 aria-label="Close">
@@ -109,44 +113,47 @@
                             <div class="overflow-auto" style="
                             overflow-x: hidden!important">
                                 {% if grand_total %}
-                                    {% for item in basket_items %}
-                                    <div class="row mt-2 pe-2 align-items-center" style="
+                                {% for item in basket_items %}
+                                <div class="row mt-2 pe-2 align-items-center" style="
                                     overflow: hidden!important">
-                                        <div class="col-5 my-1">
-                                            {% if item.product.image %}
-                                                <a href="{{ item.product.image.url }}" class="my-auto" target="_blank">
-                                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
-                                                        class="w-100">
-                                                </a>
-                                            {% else %}
-                                                <a href="">
-                                                    <img class="w-100" src="{{ MEDIA_URL }}/main_site_images/noimage.png"
-                                                        alt="{{ item.product.name }}">
-                                                </a>
-                                            {% endif %}
-                                        </div>
-                                        <div class="col-7">
-                                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                            <p class="my-0 small">Size:
-                                                {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                                            <p class="my-0 small text-muted mb-2">Qty: {{ item.quantity }}</p>
-                                            {% if item.quantity == 1 %}
-                                                <a class="btn-sm btn-danger remove-item text-decoration-none" id="remove_{{ item.item_id }}"
-                                                    data-product_size="{{ item.size }}" role="button">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                    Remove Item
-                                                </a>
-                                            {% else %}
-                                            <a class="btn-sm btn-danger remove-item text-decoration-none" id="remove_{{ item.item_id }}"
-                                            data-product_size="{{ item.size }}" role="button">
-                                                <i class="fa-solid fa-xmark"></i>
-                                                Remove Items
-                                            </a>
-                                            {% endif %}
-                                        </div>
+                                    <div class="col-5 my-1">
+                                        {% if item.product.image %}
+                                        <a href="{{ item.product.image.url }}" class="my-auto" target="_blank">
+                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                                                class="w-100">
+                                        </a>
+                                        {% else %}
+                                        <a href="">
+                                            <img class="w-100" src="{{ MEDIA_URL }}/main_site_images/noimage.png"
+                                                alt="{{ item.product.name }}">
+                                        </a>
+                                        {% endif %}
                                     </div>
-                                    <hr class="my-2">
-                                    {% endfor %}
+                                    <div class="col-7">
+                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                                        <p class="my-0 small">Size:
+                                            {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+                                        </p>
+                                        <p class="my-0 small text-muted mb-2">Qty: {{ item.quantity }}</p>
+                                        {% if item.quantity == 1 %}
+                                        <a class="btn-sm btn-danger remove-item text-decoration-none"
+                                            id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"
+                                            role="button">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Remove Item
+                                        </a>
+                                        {% else %}
+                                        <a class="btn-sm btn-danger remove-item text-decoration-none"
+                                            id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"
+                                            role="button">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Remove Items
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                {% endfor %}
                                 {% endif %}
                             </div>
                             <div class="row" {% if grand_total %}hidden{% endif %}>
@@ -165,7 +172,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <hr class="my-4">
-                                    <button class="btn btn-white float-end border border-primary mx-1" data-bs-dismiss="offcanvas" aria-label="Close">
+                                    <button class="btn btn-white float-end border border-primary mx-1"
+                                        data-bs-dismiss="offcanvas" aria-label="Close">
                                         <span>Continue Shopping</span>
                                         <i class="fa-solid fa-chevron-left"></i>
                                     </button>
@@ -189,9 +197,9 @@
                                 <i class="fas fa-circle-user fa-lg"></i>
                             </div>
                             {% if request.user.is_authenticated %}
-                                <p class="my-0 font-sbold">Account</p>
+                            <p class="my-0 font-sbold">Account</p>
                             {% else %}
-                                <p class="my-0 font-sbold">Login</p>
+                            <p class="my-0 font-sbold">Login</p>
                             {% endif %}
                         </div>
                     </button>
@@ -204,87 +212,86 @@
                                 <span>Hello, </span>
                                 <strong>{{ request.user.username }}</strong>
                             </h5>
-                            <button type="button" class="btn icon" data-bs-dismiss="offcanvas"
-                            aria-label="Close">
-                            <i class="fa-solid fa-arrow-left fa-lg"></i>
+                            <button type="button" class="btn icon" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <i class="fa-solid fa-arrow-left fa-lg"></i>
                             </button>
                         </div>
-                        <div class="offcanvas-body d-flex justify-content-between flex-column">
+                        <nav class="offcanvas-body d-flex justify-content-between flex-column">
                             <ul class="nav flex-column text-start nav-account">
                                 {% if request.user.is_authenticated %}
-                                    {% if request.user.is_staff %}
-                                        <li class="nav-item">
-                                            <a href="{% url 'add_product' %}">
-                                                <i class="fa-solid fa-toolbox mx-3 icon"></i>
-                                                Add New Product
-                                            </a>
-                                        </li>
-                                        <hr>
-                                        <li class="nav-item">
-                                            <a href="{% url 'voucher_admin' %}">
-                                                <i class="fa-solid fa-ticket-simple icon mx-3"></i>
-                                                Voucher Admin
-                                            </a>
-                                        </li>
-                                        <hr>
-                                    {% endif %}
-                                    <li class="nav-item">
-                                        <a href="{% url 'profile' %}">
-                                            <i class="fa-solid fa-user mx-3 icon"></i>
-                                            My Profile
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'my_orders' %}">
-                                            <i class="fa-solid fa-list mx-3 icon"></i>
-                                            My Orders
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'my_ratings' %}">
-                                            <i class="fa-solid fa-star mx-3 icon"></i>
-                                            My Ratings
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'view_plans' %}">
-                                            <i class="fa-solid fa-ranking-star mx-3 icon"></i>
-                                            My Plans
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'help_page' %}">
-                                            <i class="fa-solid fa-circle-question mx-3 icon"></i>
-                                            Help
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'account_logout' %}">
-                                            <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
-                                            Logout
-                                        </a>
-                                    </li>
-                                    <hr>
+                                {% if request.user.is_staff %}
+                                <li class="nav-item">
+                                    <a href="{% url 'add_product' %}">
+                                        <i class="fa-solid fa-toolbox mx-3 icon"></i>
+                                        Add New Product
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'voucher_admin' %}">
+                                        <i class="fa-solid fa-ticket-simple icon mx-3"></i>
+                                        Voucher Admin
+                                    </a>
+                                </li>
+                                <hr>
+                                {% endif %}
+                                <li class="nav-item">
+                                    <a href="{% url 'profile' %}">
+                                        <i class="fa-solid fa-user mx-3 icon"></i>
+                                        My Profile
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'my_orders' %}">
+                                        <i class="fa-solid fa-list mx-3 icon"></i>
+                                        My Orders
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'my_ratings' %}">
+                                        <i class="fa-solid fa-star mx-3 icon"></i>
+                                        My Ratings
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'view_plans' %}">
+                                        <i class="fa-solid fa-ranking-star mx-3 icon"></i>
+                                        My Plans
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'help_page' %}">
+                                        <i class="fa-solid fa-circle-question mx-3 icon"></i>
+                                        Help
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'account_logout' %}">
+                                        <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                                <hr>
                                 {% else %}
-                                    <li class="nav-item">
-                                        <a href="{% url 'account_signup' %}">
-                                            <i class="fa-solid fa-user-plus mx-3 icon"></i>
-                                            Register
-                                        </a>
-                                    </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a href="{% url 'account_login' %}">
-                                            <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
-                                            Login
-                                        </a>
-                                    </li>
-                                    <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'account_signup' %}">
+                                        <i class="fa-solid fa-user-plus mx-3 icon"></i>
+                                        Register
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="{% url 'account_login' %}">
+                                        <i class="fa-solid fa-right-from-bracket mx-3 icon"></i>
+                                        Login
+                                    </a>
+                                </li>
+                                <hr>
                                 {% endif %}
                             </ul>
                             <div class="d-flex pt-3 justify-content-center align-items-baseline">
@@ -292,7 +299,7 @@
                                 <i class="fa-solid fa-mountain-sun text-peak-grad fs-1 p-2"></i>
                                 <strong class="text-muted text-bold">Peak Fitness &copy; 2022</strong>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                 </ul>
             </div>
@@ -300,11 +307,11 @@
         <div class="row bg-peak-grad">
             <nav class="navbar navbar-expand-lg navbar-light w-100 p-0 ps-2 justify-content-around">
                 {% include 'includes/mobile-top-header.html' %}
-                    <button class="navbar-toggler bg-white rounded-3" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
-                        aria-label="Toggle Navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler bg-white rounded-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
+                    aria-label="Toggle Navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 {% include 'includes/main-nav.html' %}
             </nav>
         </div>
@@ -320,17 +327,17 @@
     {% if messages %}
     <div class="message-container d-flex justify-content-center">
         {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
         {% endfor %}
     </div>
     {% endif %}
@@ -344,29 +351,28 @@
     {% include 'includes/footer.html' %}
 
     {% block postload_js %}
-        <!---  cookie consent handler -->
-        <script defer src="{% static 'js/cookieconsent.js' %}"></script>
-        <script defer src="{% static 'js/cookieconsent-init.js' %}"></script>
-        <script type="text/javascript">
-            let mobileSearch = document.querySelector('#mobile-search')
-            let mainNav = document.querySelector('#main-nav')
+    <!---  cookie consent handler -->
+    <script defer src="{% static 'js/cookieconsent.js' %}"></script>
+    <script defer src="{% static 'js/cookieconsent-init.js' %}"></script>
+    <script type="text/javascript">
+        let mobileSearch = document.querySelector('#mobile-search')
+        let mainNav = document.querySelector('#main-nav')
 
-            mobileSearch.onclick = function (e) {
-                mainNav.classList.remove('show');
-                console.log('click')
-            }
+        mobileSearch.onclick = function (e) {
+            mainNav.classList.remove('show');
+        }
 
-            let offcanvasEl = document.querySelector('#offcanvasToast')
-            let offcanvasAlert = new bootstrap.Offcanvas(offcanvasEl, {
-                backdrop: false,
-                keyboard: false,
-                scroll: true,
-            })
-            offcanvasAlert.show()
-        </script>
-        {% if grand_total %}
-            {% include 'products/includes/quantity_input_basket_script.html' %}
-        {% endif %}
+        let offcanvasEl = document.querySelector('#offcanvasToast')
+        let offcanvasAlert = new bootstrap.Offcanvas(offcanvasEl, {
+            backdrop: false,
+            keyboard: false,
+            scroll: true,
+        })
+        offcanvasAlert.show()
+    </script>
+    {% if grand_total %}
+    {% include 'products/includes/quantity_input_basket_script.html' %}
+    {% endif %}
     {% endblock %}
 </body>
 

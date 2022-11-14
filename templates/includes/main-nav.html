@@ -1,5 +1,10 @@
-<div class="collapse navbar-collapse row" id="main-nav">
+<nav class="collapse navbar-collapse row" id="main-nav">
     <ul class="navbar-nav w-100 justify-content-evenly p-0">
+        <li class="nav-item hover-anim">
+            <a href="{% url 'home' %}" class="nav-link ps-2" aria-haspopup="true" aria-expanded="false">
+                Home
+            </a>
+        </li>
         <li class="nav-item hover-anim">
             <a href="#" class="nav-link ps-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All
@@ -11,7 +16,8 @@
                 <div class="dropdown-divider m-0"></div>
                 <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item py-2">By Rating</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?sort=main_category&direction=asc" class="dropdown-item py-2">By Category</a>
+                <a href="{% url 'products' %}?sort=main_category&direction=asc" class="dropdown-item py-2">By
+                    Category</a>
                 <div class="dropdown-divider m-0"></div>
                 <a href="{% url 'products' %}?sub_category=new_arrivals" class="dropdown-item py-2">New Arrivals</a>
             </div>
@@ -23,15 +29,20 @@
             <div class="dropdown-menu border-0 p-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?main_category=fitness" class="dropdown-item py-2">All Fitness</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=fitness&sort=price&direction=asc" class="dropdown-item py-2">By Price</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=price&direction=asc"
+                    class="dropdown-item py-2">By Price</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=fitness&sort=rating&direction=desc" class="dropdown-item py-2">By Rating</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=rating&direction=desc"
+                    class="dropdown-item py-2">By Rating</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=fitness&sort=sub_category&direction=asc" class="dropdown-item py-2">By Category</a>
+                <a href="{% url 'products' %}?main_category=fitness&sort=sub_category&direction=asc"
+                    class="dropdown-item py-2">By Category</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=fitness&sub_category=new_accessories" class="dropdown-item py-2">Accessories</a>
+                <a href="{% url 'products' %}?main_category=fitness&sub_category=new_accessories"
+                    class="dropdown-item py-2">Accessories</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=fitness&sub_category=new_arrivals" class="dropdown-item py-2">New Arrivals</a>
+                <a href="{% url 'products' %}?main_category=fitness&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Arrivals</a>
             </div>
         </li>
         <li class="nav-item dropdown hover-anim">
@@ -41,15 +52,20 @@
             <div class="dropdown-menu border-0 p-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?main_category=nutrition" class="dropdown-item py-2">All Nutrition</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=supplements" class="dropdown-item py-2">Supplements</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=supplements"
+                    class="dropdown-item py-2">Supplements</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=snacks" class="dropdown-item py-2">Snacks</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=snacks"
+                    class="dropdown-item py-2">Snacks</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=drinks" class="dropdown-item py-2">Drinks</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=drinks"
+                    class="dropdown-item py-2">Drinks</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=accessories" class="dropdown-item py-2">Accessories</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=accessories"
+                    class="dropdown-item py-2">Accessories</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=new_arrivals" class="dropdown-item py-2">New Arrivals</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Arrivals</a>
             </div>
         </li>
         <li class="nav-item dropdown hover-anim">
@@ -59,15 +75,20 @@
             <div class="dropdown-menu border-0 p-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?main_category=activewear" class="dropdown-item py-2">All Activewear</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=activewear&sub_category=mens" class="dropdown-item py-2">Men's Activewear</a>
+                <a href="{% url 'products' %}?main_category=activewear&sub_category=mens"
+                    class="dropdown-item py-2">Men's Activewear</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=activewear&sub_category=womens" class="dropdown-item py-2">Women's Activewear</a>
+                <a href="{% url 'products' %}?main_category=activewear&sub_category=womens"
+                    class="dropdown-item py-2">Women's Activewear</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=activewear&sub_category=accessories" class="dropdown-item py-2">Accessories</a>
+                <a href="{% url 'products' %}?main_category=activewear&sub_category=accessories"
+                    class="dropdown-item py-2">Accessories</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=activewear&sub_category=merchandise" class="dropdown-item py-2">Peak Merchandise</a>
+                <a href="{% url 'products' %}?main_category=activewear&sub_category=merchandise"
+                    class="dropdown-item py-2">Peak Merchandise</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=activewear&sub_category=new_arrivals" class="dropdown-item py-2">New Arrivals</a>
+                <a href="{% url 'products' %}?main_category=activewear&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Arrivals</a>
             </div>
         </li>
         <li class="nav-item dropdown hover-anim">
@@ -77,11 +98,14 @@
             <div class="dropdown-menu border-0 p-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sub_category=new_arrivals" class="dropdown-item py-2">All New Arrivals</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=exercise&sub_category=new_arrivals" class="dropdown-item py-2">New Exercise</a>
+                <a href="{% url 'products' %}?main_category=exercise&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Exercise</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=nutrition&sub_category=new_arrivals" class="dropdown-item py-2">New Nutrition</a>
+                <a href="{% url 'products' %}?main_category=nutrition&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Nutrition</a>
                 <div class="dropdown-divider m-0"></div>
-                <a href="{% url 'products' %}?main_category=merchandise&sub_category=new_arrivals" class="dropdown-item py-2">New Merchandise</a>
+                <a href="{% url 'products' %}?main_category=merchandise&sub_category=new_arrivals"
+                    class="dropdown-item py-2">New Merchandise</a>
             </div>
         </li>
         <li class="nav-item dropdown hover-anim">
@@ -97,6 +121,6 @@
                 <div class="dropdown-divider m-0"></div>
                 <a href="{% url 'products' %}?main_category=clearance" class="dropdown-item py-2">Clearance</a>
             </div>
-        </li>   
+        </li>
     </ul>
-</div>
+</nav>
