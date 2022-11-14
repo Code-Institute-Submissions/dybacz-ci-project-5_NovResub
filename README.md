@@ -88,6 +88,17 @@ This WebApp & PostgreSQL database are hosted on Heroku with all static & media f
 ![Cookies Desktop](/static/images/readme/cookies_desktop.png)
 ![Cookies Mobile](/static/images/readme/cookies_mobile.png)
 
+### **Rating system**
+* System has live updating ratings system for users only. 
+* Once a product is purchased by a user, they will recieve an instance to review the product in the Accounts > My ratings section
+![My Ratings Desktop](/static/images/readme/myratings_desktop.png)
+![My Ratings Mobile](/static/images/readme/myratings_mobile.png)
+* User clicks leave a rating and is lead to the review page for the item.
+![Rate Product Desktop](/static/images/readme/rate_desktop.png)
+![Rate Product Mobile](/static/images/readme/rate_mobile.png)
+* Once rating is submitted, it is added to ratings for that product and an avergage is summed for the total product rating.
+
+
 ## Admin/Staff Features
 
 
@@ -102,6 +113,12 @@ This WebApp & PostgreSQL database are hosted on Heroku with all static & media f
 ![Edit Product Desktop](/static/images/readme/edit_product_desktop.png)
 ![Edit Product Mobile](/static/images/readme/edit_product_mobile.png)
 
+### **Voucher Admin**
+![Voucher Admin Desktop](/static/images/readme/voucheradmin_desktop.png)
+![Voucher Admin Mobile](/static/images/readme/voucheradmin_mobile.png)
+![Voucher Desktop](/static/images/readme/voucher_desktop.png)
+![Voucher Mobile](/static/images/readme/voucher_mobile.png)
+
 
 ### **Functionality Left to Implement**
 - Expiry Dates for Vouchers
@@ -110,7 +127,6 @@ This WebApp & PostgreSQL database are hosted on Heroku with all static & media f
 ## Future Features
 - Gift Cards /Credit Vouchers
 - Returns
-## How To Use
 
 ## Data Model
 - I confirmed the name entry input works; requires an entry into the field, accepts only characters (Desktop). Start button works and user name is added to the DOM.
@@ -156,9 +172,32 @@ The live link can be found here - [Peak Fitness](https://peak-fitness.herokuapp.
 
 ## Design
 
+
 ### Model Designs
 
 **Models:**
+* Order Model:
+- ![Order Model](/static/images/readme/order_model.png)
+* Order Line Item Model:
+- ![OrderLineItem Model](/static/images/readme/orderlineitem_model.png)
+* User Profile Model:
+- ![User Profile Model](/static/images/readme/userprofile_model.png)
+* Main Category Model:
+- ![Main Category Model](/static/images/readme/maincategory_model.png)
+* Sub Category Model:
+- ![Sub Category Model](/static/images/readme/subcategory_model.png)
+* Product Model:
+- ![Product Model](/static/images/readme/product_model.png)
+* Item Rating Model:
+- ![Item Rating Model](/static/images/readme/itemrating_model.png)
+* User Rating Line ItemModel:
+- ![UserRatingLineItem Model](/static/images/readme/userratingitemline_model.png)
+* Voucher Model
+- ![Voucher Model](/static/images/readme/voucher_model.png)
+
+### Keyword Research
+
+![Keyword Initial Research](/static/images/readme/keyword_1.png)
 
 ### Initial Wireframes & Design Features
 
