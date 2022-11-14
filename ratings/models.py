@@ -65,11 +65,11 @@ def create_product_rating_collection(sender, instance, created, **kwargs):
     """
     Create product rating collection/book on creation of product.
     """
-    if created:
-        collection = ItemRating.objects.create(product=instance)
-        Product.objects.filter(pk=instance.pk).update(
-            rating_collection=collection
-            )
+    # if created:
+    collection = ItemRating.objects.create(product=instance)
+    Product.objects.filter(pk=instance.pk).update(
+        rating_collection=collection
+        )
 
 
 @receiver(post_save, sender=OrderLineItem)
