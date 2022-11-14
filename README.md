@@ -2,7 +2,7 @@
 
 ![Peak Fitness logo](/static/images/readme/logo.png)
 
-An E-Commerce WebApp store specialising in personal gym equiptment, fitness accessories, healthy consumables & activewear. It also specialises in a range of subscriptions plans realted to healthy living and fitness by providing personalised diet plans & exercise routines.
+An E-Commerce B2C WebApp store specialising in personal gym equiptment, fitness accessories, healthy consumables & activewear. It also plans to specialise in a range of subscriptions plans realted to healthy living and fitness by providing personalised diet plans & exercise routines.
 Provides a small social platform for other users to share their achievements and active & completed subscriptions 
 
 The backend runs on the Django 3.2 python web-framework with a PostgreSQL database using the Django MVT model (similar to the standard MVC), the front-end web pages are rendered from templates served by the Django backend, these templates were written in a combination of HTML5 & Django templating language which allows for pythonic functions such as loops and variables to be utilised. 
@@ -12,6 +12,9 @@ CSS3, Bootstrap 5, JavaScript were utilised to gain the desired front-end functi
 This WebApp & PostgreSQL database are hosted on Heroku with all static & media files hosted on AWS S3 and handled through Django.
 
 [Click here for the live version](https://peak-fitness.herokuapp.com/)
+
+![Homepage](/static/images/readme/homepage.png)
+
 
 # Current Features
 
@@ -24,6 +27,7 @@ This WebApp & PostgreSQL database are hosted on Heroku with all static & media f
 * Live Basket Total
 * User Menu
 * E-Commerce Nav
+    * Home
     * All 
     * Fitness
     * Nutrition
@@ -41,62 +45,85 @@ This WebApp & PostgreSQL database are hosted on Heroku with all static & media f
 
 ### **E-commerce / Shop**
 
-* Browse Product Page
+* Browse Product Page 
+![Product Page Desktop](/static/images/readme/product_page_desktop.png)
+![Product Page mobile](/static/images/readme/product_page_mobile.png)
 
 * Product Details Page
+![Product Details Desktop](/static/images/readme/product_details_desktop.png)
+![Product Details mobile](/static/images/readme/product_details_mobile.png)
 
-* Basket Page
+* Basket Page/Checkout
+![Product Basket Desktop](/static/images/readme/product_basket_desktop.png)
+![Product Basket mobile](/static/images/readme/product_basket_mobile.png)
 
-* Checkout Page
+* Basket Canvas - on click of basket in desktop.
+![Product Basket Canvas Desktop](/static/images/readme/product_basket_canvas_desktop.png)
+
+* Secure Checkout Page
+![Checkout Desktop](/static/images/readme/checkout_desktop.png)
+![Checkout Mobile](/static/images/readme/checkout_mobile.png)
 
 * Confirmation Page
-
-* E-commerce / Plans
+![Confirmation Desktop](/static/images/readme/confirmation_desktop.png)
+![Confirmation Mobile](/static/images/readme/confirmation_mobile.png)
 
 * User Account
     * Profile Page
+    ![Profile Desktop](/static/images/readme/profile_desktop.png)
+    ![Profile Mobile](/static/images/readme/profile_mobile.png)
     * Orders Page
-    * Plans Page
-    * Settings Page
-    * Help Page
+    ![Order Desktop](/static/images/readme/order_desktop.png)
+    ![Order Mobile](/static/images/readme/order_mobile.png)
 
-* Login / Register - Accounts Authorisation
+* Accounts Authorisation
+    * Login
+    ![Login Desktop](/static/images/readme/login_desktop.png)
+    ![Login Mobile](/static/images/readme/login_mobile.png)
+    * Register
+    ![Register Desktop](/static/images/readme/register_desktop.png)
+    ![Register Mobile](/static/images/readme/register_mobile.png)
+
+* Cookies Accept
+![Cookies Desktop](/static/images/readme/cookies_desktop.png)
+![Cookies Mobile](/static/images/readme/cookies_mobile.png)
 
 ## Admin/Staff Features
 
-### **Dashboard**
 
-### **Dev Admin**
+### **Account Canvas Admin**
+![Admin Account Desktop](/static/images/readme/admin_account_canvas_desktop.png)
+![Admin Account Mobile](/static/images/readme/admin_account_mobile.png)
+
+* Add Product
+![Add Product Desktop](/static/images/readme/add_product_desktop.png)
+![Admin Product Mobile](/static/images/readme/add_product_mobile.png)
+* Edit/Delete Product
+![Edit Product Desktop](/static/images/readme/edit_product_desktop.png)
+![Edit Product Mobile](/static/images/readme/edit_product_mobile.png)
+
 
 ### **Functionality Left to Implement**
+- Expiry Dates for Vouchers
+- Plans App
 
 ## Future Features
-
+- Gift Cards /Credit Vouchers
+- Returns
 ## How To Use
 
 ## Data Model
-
-## Testing 
-
-### General Testing
-
-
-### Javascript Testing
-
-**Jest**
-- N/A
-
-### Django Testing
-**Coverage** - Ran on local sqlite3 database.
-
-### User Testing
-
-**Guest**
-
-**Staff**
+- I confirmed the name entry input works; requires an entry into the field, accepts only characters (Desktop). Start button works and user name is added to the DOM.
 
 ### Browser Testing
 **Lighthouse**
+- Mobile Results
+![Mobile Lighthouse Report](/static/images/readme/mobile_lighthouse_report.png)
+
+- Desktop Results
+![Desktop Lighthouse Report](/static/images/readme/desktop_lighthouse_report.png)
+<!-- ![Lighthouse Results]()
+- I confirmed that ... are all readable and easy to understand. -->
 
 ## Deployment
 
@@ -131,7 +158,7 @@ The live link can be found here - [Peak Fitness](https://peak-fitness.herokuapp.
 
 ### Model Designs
 
-**Initial Models:**
+**Models:**
 
 ### Initial Wireframes & Design Features
 
@@ -152,9 +179,11 @@ The live link can be found here - [Peak Fitness](https://peak-fitness.herokuapp.
 
 - [Bootstrap 5](https://getbootstrap.com/) - CSS Framework
 - [Font Awesome](https://fontawesome.com/) - Icons
+- [Cookie Consent](https://orestbida.com/demo-projects/cookieconsent/) - Cookie Consent
 
 **Media:**
-- The images/videos used in this webapp were sourced from [Pexels](https://www.https://www.pexels.com/) & [Pixabay](https://pixabay.com/)
+- Some images/videos used in this webapp were sourced from [Pexels](https://www.https://www.pexels.com/) & [Pixabay](https://pixabay.com/)
+- Product images/videos used in this webapp were sourced from [Decathalon](https://www.decathlon.co.uk/)
 
 **Fonts**
 - Some of the fonts used in this webapp were sourced from [Google Fonts](https://fonts.google.com/)
