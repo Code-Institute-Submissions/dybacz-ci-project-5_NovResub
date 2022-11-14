@@ -51,6 +51,8 @@ form.addEventListener('submit', function (ev) {
     card.update({
         'disabled': true
     });
+    let loadingOverlay = document.querySelector('#loading-overlay');
+    loadingOverlay.style.display = "block"
     let cardSubmitBtn = document.querySelector('#submit-button');
     cardSubmitBtn.setAttribute('disabled', true);
     let saveInfoElement = document.querySelector("#id-save-info");
@@ -109,6 +111,7 @@ form.addEventListener('submit', function (ev) {
                         <span>${result.error.message}</span>
                     `;
                     errorDiv.innerHTML = html;
+                    loadingOverlay.style.display = "none"
                     card.update({
                         'disabled': false
                     });
