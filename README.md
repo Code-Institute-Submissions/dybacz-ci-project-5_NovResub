@@ -11,6 +11,17 @@ CSS3, Bootstrap 5, JavaScript were utilised to gain the desired front-end functi
 
 This WebApp & PostgreSQL database are hosted on Heroku with all static & media files hosted on AWS S3 and handled through Django.
 
+Welcome to Peak Fitness!
+
+We're here to make your search for the perfect fitness equipment that little bit easier. 
+
+From sportswear to exercise equipment to nutritional meals, we've got you covered! Gone are the days of endlessly trawling the web for fitness inspiration that never seems to come. Here at Peak Fitness we aspire to bring you on a journey to help take your fitness to the next level. 
+
+Not only do we offer a wide and unique range of sports equipment to suit all budgets, but we also offer personalised subscription plans tailored to you, meaning fitness no longer has to be a chore. Whether you're a sports enthusiast, looking to improve your health, or just want to browse for some nutritional inspiration, we are here to guide you in the right direction.
+
+Why not subscribe to our monthly newsletter to be the first to hear about our latest offers and get inspiration on all things fitness! 
+
+
 [Click here for the live version](https://peak-fitness.herokuapp.com/)
 
 ![Homepage](/static/images/readme/homepage.png)
@@ -199,7 +210,18 @@ The live link can be found here - [Peak Fitness](https://peak-fitness.herokuapp.
 
 ![Keyword Initial Research](/static/images/readme/keyword_1.png)
 
-### Initial Wireframes & Design Features
+### Business Intents
+- B2C Model
+- E-commerce focusing on Fitness and Nutrition at good value.
+- Unique range of sporting equipment to suit all budgets
+- Environmentally Safe sourced products & nutrition.
+- Eventual goal was to offer personalised subscription plans tailored to you.
+- Plans were to include P.A workouts over a course or a diet/nutrition plan composed by a professional nutritionalist.
+
+### Marketing Strategies 
+- Subscription Newsletters with vouchers to apply on website.
+- Social media such as Facebook et al.
+- SEO Optimisation with help from tools such as Google services.
 
 ## Credits 
 

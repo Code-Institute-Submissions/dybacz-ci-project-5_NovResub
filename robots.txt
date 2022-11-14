@@ -1,4 +1,6 @@
 User-agent: *
 Disallow: /accounts/
 Disallow: /basket/
+Disallow: /profile/
+Disallow: /accounts/
 Sitemap: https://peak-fitness.herokuapp.com/sitemap.xml
