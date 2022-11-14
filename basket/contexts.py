@@ -1,4 +1,4 @@
-""" Context Processor - Make context available t
+""" Context Processor - Make context available
  to all templates across the application """
 
 from decimal import Decimal
@@ -13,6 +13,8 @@ def bag_contents(request):
     basket_items = []
     total = 0
     product_count = 0
+    voucher = False
+    voucher_multiplier = 0
     basket = request.session.get('basket', {})
     for item_id, item_data in basket.items():
         if isinstance(item_data, int):
@@ -45,6 +47,15 @@ def bag_contents(request):
 
     grand_total = total + delivery
 
+    vouchers = request.session.get('vouchers', {})
+    for voucher_id, voucher_data in vouchers.items():
+        if isinstance(voucher_data, str):
+            voucher_multiplier = Decimal(voucher_data)
+            voucher = True
+
+    if voucher:
+        grand_total = grand_total - (grand_total * voucher_multiplier)
+
     context = {
         'basket_items': basket_items,
         'total': total,
@@ -53,6 +64,8 @@ def bag_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
+        'voucher' : voucher,
+        'voucher_multiplier': voucher_multiplier
     }
 
     return context

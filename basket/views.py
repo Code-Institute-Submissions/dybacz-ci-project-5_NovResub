@@ -1,17 +1,31 @@
 from django.shortcuts import (
-    render, redirect, reverse, HttpResponse, get_object_or_404
+    render, redirect, reverse, HttpResponse, get_object_or_404, get_list_or_404
 )
 from django.contrib import messages
 import json
 from products.models import Product
+from vouchers.models import Voucher
 
 # Create your views here.
 
 
 def view_basket(request):
     """ A view to return the basket contents page """
+    voucher_session = request.session.get('vouchers', {})
+    voucher_id = None
+    # print(voucher_session.get('1'))
+    for key, value in voucher_session.items():
+        voucher_id = key
+    
+    if voucher_id != None:
+        voucher_item = get_object_or_404(Voucher, pk=voucher_id)
+    else:
+        voucher_item = None
+    
+
     context = {
         'view_basket': True,
+        'voucher_item': voucher_item
     }
     return render(request, 'basket/basket.html', context)
 

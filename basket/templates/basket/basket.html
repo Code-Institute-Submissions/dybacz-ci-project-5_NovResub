@@ -107,6 +107,21 @@
                                             Spend <strong>£{{ free_delivery_delta }}</strong> more for <strong>FREE</strong> delivery!
                                         </p>
                                     {% endif %}
+                                    <form method="POST" action="{% url 'voucher_attempt'%}">
+                                        {% csrf_token %}
+                                        <div class="input-group mb-3 w-25 ms-auto">
+                                            <span class="input-group-text" id="voucher-input">Voucher</span>
+                                            <input type="text" class="form-control" placeholder="Enter a code" aria-label="Voucher Input" aria-describedby="voucher-input" name="voucher-input">
+                                        </div>
+                                        {% if voucher  %}
+                                        <p class="text-success">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            {{ voucher_item.name }} has been applied. Enjoy {{ voucher_multiplier|multiply:100 }}% off your basket
+                                        </p>
+                                        {% else %}
+                                        <button type="submit" class="btn btn-dark" id="voucher-btn" value="Apply Code">Apply Code</button> 
+                                        {% endif %}
+                                    </form>
                                 </td>
                             </tr>
                             <tr>
