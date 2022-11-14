@@ -51,6 +51,9 @@ class StrpWH_Handler:
         intent = event.data.object
         pid = intent.id
         basket = intent.metadata.basket
+        if intent.metadata.vouchers != "{}":
+            vouchers = intent.metadata.vouchers.split('"')[1]
+        vouchers = None
         save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
@@ -97,6 +100,7 @@ class StrpWH_Handler:
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
                     original_basket=basket,
+                    voucher_info=vouchers,
                     stripe_pid=pid,
                 )
                 order_exists = True
@@ -125,6 +129,7 @@ class StrpWH_Handler:
                         street_address2=shipping_details.address.line2,
                         county=shipping_details.address.state,
                         original_basket=basket,
+                        voucher_info_id=vouchers,
                         stripe_pid=pid,
                     )
                 for item_id, item_data in json.loads(basket).items():

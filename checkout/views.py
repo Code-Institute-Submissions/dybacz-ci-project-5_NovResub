@@ -12,6 +12,7 @@ from basket.contexts import bag_contents
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import ProfileForm
+from vouchers.models import Voucher
 from .models import Order, OrderLineItem
 from .forms import OrderForm
 
@@ -26,6 +27,7 @@ def cache_checkout_data(request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'basket': json.dumps(request.session.get('basket', {})),
+            'vouchers': json.dumps(request.session.get('vouchers', {})),
             'save_info': data['post_data']['save_info'],
             'username': request.user,
         })
@@ -43,6 +45,11 @@ def checkout(request):
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
+        vouchers = request.session.get('vouchers', {})
+        voucher_info = None
+
+        for key, value in vouchers.items():
+            voucher_info = get_object_or_404(Voucher, pk=key)
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -60,13 +67,14 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
+            order.voucher_info = voucher_info
             if request.user.is_authenticated:
                 profile = UserProfile.objects.get(user=request.user)
                 # Attach user profile to order
                 order.user_profile = profile
             
             order.original_basket = json.dumps(basket)
-            
+            order.original_vouchers = json.dumps(vouchers)
             order.save()
             for item_id, item_data in basket.items():
                 try:
@@ -181,6 +189,9 @@ def checkout_success(request, order_number):
 
     if 'basket' in request.session:
         del request.session['basket']
+    
+    if 'vouchers' in request.session:
+        del request.session['vouchers']
 
     template = 'checkout/checkout_success.html'
     context = {
