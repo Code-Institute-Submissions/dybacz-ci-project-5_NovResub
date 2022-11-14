@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    render, get_object_or_404, redirect, reverse)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
@@ -7,6 +8,7 @@ from .forms import AdminVoucherForm
 
 
 from .models import Voucher
+
 
 # Create your views here.
 @login_required
@@ -17,7 +19,7 @@ def voucher_admin(request):
         messages.error(request, 'Access Denied: You do not have the required \
         permissions to do that.')
         return redirect(reverse('home'))
-    
+
     vouchers = Voucher.objects.all()
     template = 'vouchers/voucher_admin.html'
     context = {
@@ -112,24 +114,17 @@ def voucher_attempt(request):
         voucher_id = str(voucher.pk)
         vouchers = request.session.get('vouchers', {})
         if voucher_id in list(vouchers.keys()):
-            messages.error(request, 'You already have a valid code applied to your basket.')
+            messages.error(request, 'You already have a valid code applied to your \
+        basket.')
             return redirect(reverse('view_basket'))
-            
+
         vouchers[voucher_id] = str(voucher.fractional_discount)
         request.session['vouchers'] = vouchers
 
-        messages.success(request, f'Success! {voucher_input} is a valid code. {voucher.description} has been applied to your basket.')
+        messages.success(request, f'Success! {voucher_input} is a valid code. \
+    {voucher.description} has been applied to your basket.')
         return redirect(reverse('view_basket'))
-    
-    messages.error(request, f'Sorry! {voucher_input} is not a valid code. Please try again')
+
+    messages.error(request, f'Sorry! {voucher_input} is not a valid code. \
+Please try again')
     return redirect(reverse('view_basket'))
-
-    
-    # vouchers = Voucher.objects.all()
-    # template = 'vouchers/voucher_admin.html'
-    # context = {
-    #     'profile_page': True,
-    #     'vouchers': vouchers
-    # }
-
-    # return render(request, template, context)

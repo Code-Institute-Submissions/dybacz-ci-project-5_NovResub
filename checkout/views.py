@@ -72,7 +72,7 @@ def checkout(request):
                 profile = UserProfile.objects.get(user=request.user)
                 # Attach user profile to order
                 order.user_profile = profile
-            
+
             order.original_basket = json.dumps(basket)
             order.original_vouchers = json.dumps(vouchers)
             order.save()
@@ -167,7 +167,7 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
+
         # Save the user's info
         if save_info:
             profile_data = {
@@ -189,7 +189,7 @@ def checkout_success(request, order_number):
 
     if 'basket' in request.session:
         del request.session['basket']
-    
+
     if 'vouchers' in request.session:
         del request.session['vouchers']
 

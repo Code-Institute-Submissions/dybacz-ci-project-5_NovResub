@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
 class Voucher(models.Model):
     """
     Voucher model for all voucher details.

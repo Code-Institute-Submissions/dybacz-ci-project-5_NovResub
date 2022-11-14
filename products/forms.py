@@ -8,7 +8,7 @@ class AdminProductForm(forms.ModelForm):
     class Meta:
         model = Product
         # fields = '__all__'
-        exclude = {'rating', 'image_url', 'rating_collection',}
+        exclude = {'rating', 'image_url', 'rating_collection', }
 
     image = forms.ImageField(label="Image", required=False,
                              widget=CustomClearableFileInput)

@@ -1,5 +1,5 @@
 from django.shortcuts import (
-    render, redirect, reverse, HttpResponse, get_object_or_404, get_list_or_404
+    render, redirect, reverse, HttpResponse, get_object_or_404
 )
 from django.contrib import messages
 import json
@@ -16,12 +16,11 @@ def view_basket(request):
     # print(voucher_session.get('1'))
     for key, value in voucher_session.items():
         voucher_id = key
-    
-    if voucher_id != None:
+
+    if voucher_id is not None:
         voucher_item = get_object_or_404(Voucher, pk=voucher_id)
     else:
         voucher_item = None
-    
 
     context = {
         'view_basket': True,

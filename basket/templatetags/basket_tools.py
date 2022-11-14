@@ -9,6 +9,7 @@ def calc_subtotal(price, quantity):
     """ calculates subtotal of multiple of the same item """
     return price * quantity
 
+
 @register.filter
 def multiply(value, arg):
     return value * arg

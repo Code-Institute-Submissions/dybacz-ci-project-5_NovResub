@@ -15,7 +15,9 @@ class ItemRating(models.Model):
     """
     Item rating model for all user ratings.
     """
-    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.OneToOneField(
+        Product, on_delete=models.SET_NULL, null=True, blank=True
+        )
     total_rating = models.DecimalField(
         max_digits=4, decimal_places=2, null=True, blank=True)
 
@@ -57,6 +59,7 @@ class UserItemRatingLine(models.Model):
         return f'{self.rating} / 5 review from {self.user.username}\
     on order {self.order.order_number}'
 
+
 @receiver(post_save, sender=Product)
 def create_product_rating_collection(sender, instance, created, **kwargs):
     """
@@ -64,7 +67,9 @@ def create_product_rating_collection(sender, instance, created, **kwargs):
     """
     if created:
         collection = ItemRating.objects.create(product=instance)
-        Product.objects.filter(pk=instance.pk).update(rating_collection=collection)
+        Product.objects.filter(pk=instance.pk).update(
+            rating_collection=collection
+            )
 
 
 @receiver(post_save, sender=OrderLineItem)

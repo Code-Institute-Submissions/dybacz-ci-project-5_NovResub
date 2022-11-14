@@ -12,4 +12,5 @@ class VoucherAdmin(admin.ModelAdmin):
         'expiry_date',
     )
 
+
 admin.site.register(Voucher, VoucherAdmin)

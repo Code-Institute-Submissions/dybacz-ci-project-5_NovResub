@@ -11,7 +11,6 @@ from profiles.models import UserProfile
 from vouchers.models import Voucher
 
 
-
 class Order(models.Model):
     """"""
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -68,7 +67,9 @@ class Order(models.Model):
         self.grand_total = self.order_total + self.delivery_cost
 
         if self.voucher_info:
-            self.grand_total = self.grand_total - (self.grand_total * self.voucher_info.fractional_discount)
+            self.grand_total = self.grand_total - (
+                self.grand_total * self.voucher_info.fractional_discount
+                )
         self.save()
 
     def save(self, *args, **kwargs):
