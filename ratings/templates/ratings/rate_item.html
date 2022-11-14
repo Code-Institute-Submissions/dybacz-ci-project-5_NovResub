@@ -20,16 +20,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-12 col-lg-8 offset-lg-2">
                 <div class="order-confirmation-wrapper p-4 pb-2 border rounded">
                     <div class="row pt-2">
                         <div class="col-12 col-md-6">
                             <p class="mb-0 text-black fw-bold">
                                 <u>Order Number</u>
                             </p>
-                            <p class="mb-0">{{ item.order.order_number }}</p>
+                            <p class="mb-0 overflow-hidden">{{ item.order.order_number }}</p>
                         </div>
-                        <div class="col-12 col-md-6 text-end">
+                        <div class="col-12 col-md-6 text-lg-end">
                             <p class="mb-0 text-black fw-bold">
                                 <u>Order Date</u>
                             </p>
@@ -38,7 +38,7 @@
                     </div>
                     <hr class="my-2 p-0">
                     <div class="row">
-                        <div class="col-2 text-center">
+                        <div class="col-6 col-lg-2 text-lg-center">
                             <small class="text-muted text fw-bold">
                                 <u>Item Details:</u>
                             </small>
@@ -48,15 +48,15 @@
                         <div class="col-12 col-md-4">
                             <a href="">
                                 {% if item.product.image %}
-                                    <img class="w-75" src="" alt="{{ product.name }}">
+                                    <img class="w-lg-75 w-100" src="" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="w-75" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}">
+                                    <img class="w-lg-75 w-100" src="{{ MEDIA_URL }}/main_site_images/noimage.png" alt="{{ item.product.name }}">
                                 {% endif %}
                             </a>
                         </div>
                         <div class="col-12 col-md-5">
                             <p class="small mb-0 text-black fw-bold">
-                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product.size|upper }}{% endif %}
+                                {{ item.product.name }}
                             </p>
                         </div>
                         <div class="col-12 col-md-3">

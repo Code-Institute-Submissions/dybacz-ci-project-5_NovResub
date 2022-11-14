@@ -56,11 +56,11 @@
                                     {{ voucher.expiry_date|date:"SHORT_DATE_FORMAT" }}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{% url 'remove_voucher' voucher.id%}" class="btn btn-danger text-center mx-3">
+                                    <a href="{% url 'remove_voucher' voucher.id%}" class="btn btn-danger text-center mx-lg-3 my-2 my-lg-0">
                                         <i class="fa-solid fa-xmark icon"></i>
                                         Delete Voucher
                                     </a>
-                                    <a href="{% url 'edit_voucher' voucher.id%}" class="btn btn-warning text-center mx-3">
+                                    <a href="{% url 'edit_voucher' voucher.id%}" class="btn btn-warning text-center mx-lg-3 my-2 my-lg-0">
                                         <i class="fa-regular fa-pen-to-square icon"></i>
                                         Edit Voucher
                                     </a>

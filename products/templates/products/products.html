@@ -12,7 +12,7 @@
 {% block content%}
         <div class="overlay"></div>
         <div class="d-flex shopping-container">
-            <div class="container position-fixed shopping-nav p-0 m-0 bg-white border-end shadow-sm">
+            <div class="container position-fixed shopping-nav p-0 m-0 bg-white border-end shadow-sm d-none d-lg-block">
                 <div class="row mt-3 ps-1 overflow-auto pb-5">
                     <div class="col-12 ps-3 overflow-hidden">
                         <h4 class="primary-text-colour m-0 text-center">{{ page_header|title }}</h4>
@@ -64,7 +64,7 @@
                             <h3 class="primary-text-colour m-0 text-center">Sort by</h3>
                             <hr class="my-2">
                         </div>
-                        <div class="col-12 ps-3 sort-checker">
+                        <div class="col-12 sort-checker">
                             <div class="form-check form-switch">
                                 <input class="form-check-input sort-check" type="checkbox" id="flexSwitchCheckPriceLTH"
                                 value="price-asc">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container w-75 pb-5">
+            <div class="container w-100 w-lg-75 pb-5">
                 <div class="row">
                     <div class="col text-center mt-3">
                             {% for s in current_sub_categories %}
@@ -120,11 +120,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="product-container col-10 offset-2">
+                    <div class="product-container col-12 col-lg-10 offset-lg-2">
                         <div class="row mt-1 mb-2">
-                            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                                <div class="sort-select-wrapper w-50">
-                                    <select id="sort-selector" class="form-select-sm custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <div class="col-12 col-lg-6 my-auto order-lg-last d-flex justify-content-center justify-content-lg-end">
+                                <div class="sort-select-wrapper w-lg-50 w-100">
+                                    <select id="sort-selector" class="form-select-sm w-100 w-md-25 custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                         <option value="price-asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                         <option value="price-desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -217,8 +217,8 @@
                 </div>
             </div>
         </div>
-        <div class="btt-button shadow-sm rounded-0 border bg-white">
-            <a class="btt-link d-flex h-100">
+        <div class="btt-button shadow-sm rounded-0 border">
+            <a class="btt-link d-flex h-100  bg-white">
                 <i class="fas fa-arrow-up mx-auto my-auto"></i>
             </a>
         </div>

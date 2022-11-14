@@ -1,6 +1,6 @@
 .order-history {
     max-height: 416px; 
-    overflow-y: auto;
+    overflow: auto;
 }
 
 #profile-update-form input::placeholder{
