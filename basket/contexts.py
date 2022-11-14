@@ -8,7 +8,9 @@ from products.models import Product
 
 
 def bag_contents(request):
-    """"""
+    """ 
+    Context used acrossall templates for basket items and active voucher codes
+    """
 
     basket_items = []
     total = 0

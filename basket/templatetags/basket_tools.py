@@ -12,4 +12,5 @@ def calc_subtotal(price, quantity):
 
 @register.filter
 def multiply(value, arg):
+    """ multiplies value by argument """
     return value * arg
