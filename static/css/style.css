@@ -460,6 +460,10 @@ input[type=number] {
 footer {
     z-index: 10;
 }
+
+#div_id_login {
+    margin-bottom: 10px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
