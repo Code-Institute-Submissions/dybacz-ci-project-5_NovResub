@@ -8,6 +8,8 @@ from django_countries.fields import CountryField
 
 from products.models import Product
 from profiles.models import UserProfile
+from vouchers.models import Voucher
+
 
 
 class Order(models.Model):
@@ -39,6 +41,9 @@ class Order(models.Model):
     original_basket = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    voucher_info = models.ForeignKey(Voucher, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='voucher')
 
     def _generate_order_number(self):
         """
@@ -61,6 +66,9 @@ class Order(models.Model):
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
+
+        if self.voucher_info:
+            self.grand_total = self.grand_total - (self.grand_total * self.voucher_info.fractional_discount)
         self.save()
 
     def save(self, *args, **kwargs):

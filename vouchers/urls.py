@@ -10,5 +10,6 @@ urlpatterns = [
     path('remove_voucher/<int:voucher_id>',
          views.remove_voucher,
          name='remove_voucher'),
+    path('voucher_attempt/', views.voucher_attempt, name='voucher_attempt'),
 
 ]

@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 from .forms import AdminVoucherForm
 
@@ -96,3 +97,39 @@ def remove_voucher(request, voucher_id):
     voucher.delete()
     messages.success(request, f'{voucher.name} - Voucher deleted!')
     return redirect(reverse('voucher_admin'))
+
+
+@require_POST
+def voucher_attempt(request):
+    """ A view to check voucher code then redirect back to basket """
+
+    voucher_input = request.POST.get('voucher-input')
+    voucher_exists = Voucher.objects.filter(
+        voucher_code=voucher_input).exists()
+
+    if voucher_exists:
+        voucher = get_object_or_404(Voucher, voucher_code=voucher_input)
+        voucher_id = str(voucher.pk)
+        vouchers = request.session.get('vouchers', {})
+        if voucher_id in list(vouchers.keys()):
+            messages.error(request, 'You already have a valid code applied to your basket.')
+            return redirect(reverse('view_basket'))
+            
+        vouchers[voucher_id] = str(voucher.fractional_discount)
+        request.session['vouchers'] = vouchers
+
+        messages.success(request, f'Success! {voucher_input} is a valid code. {voucher.description} has been applied to your basket.')
+        return redirect(reverse('view_basket'))
+    
+    messages.error(request, f'Sorry! {voucher_input} is not a valid code. Please try again')
+    return redirect(reverse('view_basket'))
+
+    
+    # vouchers = Voucher.objects.all()
+    # template = 'vouchers/voucher_admin.html'
+    # context = {
+    #     'profile_page': True,
+    #     'vouchers': vouchers
+    # }
+
+    # return render(request, template, context)
