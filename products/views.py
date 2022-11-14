@@ -27,9 +27,8 @@ def all_products(request):
         if 'main_category' in request.GET and 'sub_category' in request.GET:
             sub_categories = request.GET['sub_category'].split('%')
             main_categories = request.GET['main_category'].split('%')
-            page_header = request.GET(
-                ['main_category'] + " " + request.GET['sub_category']
-            )
+            page_header = ""
+            page_header += request.GET['sub_category']
             clean_page_header = clean_text(page_header, "_", " ")
             products = products.filter(
                 main_category__name__in=main_categories,
