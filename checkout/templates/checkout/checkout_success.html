@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load order_tools %}
 
 {% block add_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -135,7 +136,7 @@
                         </div>
                         <div class="col-12 col-md-5">
                             <p class="small mb-0 text-black fw-bold">
-                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product.size|upper }}{% endif %}
+                                {{ item.product.name }}{% if item.product_size %} - Size :{{ item.product_size|upper }}{% endif %}
                             </p>
                         </div>
                         <div class="col-12 col-md-3">
@@ -173,14 +174,21 @@
                         </div>
                         <div class="col-2">
                             <p class="mb-0 text-black fw-bold">Order Total:</p>
+
                             <p class="mb-0 text-black fw-bold">Delivery Charges:</p>
+                            {% if order.voucher_info %}
+                                <p class="mb-0 text-black fw-bold">{{ order.voucher_info.fractional_discount|multiply:100|floatformat:"0" }} % Discount</p>
+                            {% endif %}
                             <p class="mb-0 text-black fw-bold">Grand Total:</p>
 
                         </div>
                         <div class="col-2">
-                            <p class="mb-0">£{{ order.order_total }}</p>
-                            <p class="mb-0 border-bottom">£{{ order.delivery_cost }}</p>
-                            <p class="mb-0 fw-bold">£{{ order.grand_total }}</p>
+                            <p class="mb-0">&nbsp£{{ order.order_total }}</p>
+                            <p class="mb-0 border-bottom">&nbsp£{{ order.delivery_cost }}</p>
+                            {% if order.voucher_info %}
+                                <p class="mb-0 text-danger fw-bold border-bottom">-£{{ order.order_total|add:order.delivery_cost|multiply:order.voucher_info.fractional_discount|floatformat:"2"}}</p>
+                            {% endif %}
+                            <p class="mb-0 fw-bold">&nbsp£{{ order.grand_total }}</p>
                         </div>
                     </div>
                 </div>

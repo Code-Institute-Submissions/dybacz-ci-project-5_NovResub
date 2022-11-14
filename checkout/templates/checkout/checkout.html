@@ -61,12 +61,18 @@
                     <div class="col-7 offset-2">
                         <p class="my-0">Order Total:</p>
                         <p class="my-0">Delivery:</p>
+                        {% if voucher_multiplier %}
+                        <p class="my-0">Discounts:</p>
+                        {% endif %}
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">£{{ total | floatformat:2 }}</p>
-                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">&nbsp£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">&nbsp£{{ delivery | floatformat:2 }}</p>
+                        {% if voucher_multiplier %}
+                        <p class="mb-0 text-danger fw-bold border-bottom">-£{{ total|add:delivery|multiply:voucher_multiplier|floatformat:"2"}}</p>
+                        {% endif %}
+                        <p class="my-0"><strong>&nbsp£{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
